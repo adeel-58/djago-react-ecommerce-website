@@ -18,9 +18,9 @@ import Dashboard from './components/account/Dashboard';
 import Orders from './components/account/Orders';
 import Addresses from './components/account/Addresses';
 import AccountDetails from './components/account/AccountDetails';
-import CategoryProductsPage from './pages/CategoryPage';
+//import CategoryProductsPage from './pages/CategoryPage';
 import ProductDetailPage from './pages/ProductPage';
-
+import OrdersPage from './pages/OrdersPage';
 
 
 const App = () => {
@@ -49,7 +49,7 @@ const App = () => {
             <Route path="/category/:slug" element={<CategoryPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/product/:id" element={<ProductDetailPage />} />
-            
+            <Route path="/account/orders" element={<OrdersPage />} />
 
             
           </Routes>

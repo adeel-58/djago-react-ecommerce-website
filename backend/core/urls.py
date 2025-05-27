@@ -24,6 +24,7 @@ router.register(r'orders', OrderViewSet)
 router.register(r'order-items', OrderItemViewSet)
 router.register(r'payments', PaymentViewSet)
 router.register(r'shipping', ShippingViewSet)
+router.register(r'orders', OrderViewSet, basename='orders')
 
 urlpatterns = [
     path('auth/register/', RegisterView.as_view(), name='register'),
