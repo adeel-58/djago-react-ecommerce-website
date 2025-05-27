@@ -1,36 +1,37 @@
+// src/pages/CartPage.js
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
-import { clearCart, addToCart } from '../redux/slices/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addToCart,
+  clearCart,
+} from '../redux/slices/cartSlice';
+import CartItemCard from '../components/cart/CartItemCard';
+
 const backendBaseURL = 'http://localhost:8000';
 
 const CartPage = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   useEffect(() => {
     const fetchCart = async () => {
       const token = localStorage.getItem('access_token');
-
       if (!token) {
-        dispatch(clearCart());  // If not logged in, clear cart
+        dispatch(clearCart());
         setLoading(false);
         return;
       }
 
       try {
         const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         };
-
-        const response = await axios.get('http://127.0.0.1:8000/api/cart/', config);
-
-        // Clear existing cart and add fetched items
+        const response = await axios.get(`${backendBaseURL}/api/cart/`, config);
         dispatch(clearCart());
-        response.data.forEach(item => {
+        response.data.forEach((item) => {
           dispatch(
             addToCart({
               id: item.product.id,
@@ -42,8 +43,8 @@ const CartPage = () => {
           );
         });
       } catch (error) {
-        console.error('Error fetching cart:', error);
-        dispatch(clearCart());  // Optional: clear cart on error
+        console.error('Error fetching cart:', error.response?.data || error.message);
+        dispatch(clearCart());
       } finally {
         setLoading(false);
       }
@@ -52,8 +53,8 @@ const CartPage = () => {
     fetchCart();
   }, [dispatch]);
 
-  // Optional: show cart items from Redux
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const getTotalAmount = () =>
+    cartItems.reduce((total, item) => total + item.price * item.qty, 0).toFixed(2);
 
   return (
     <div className="cart-page">
@@ -66,15 +67,17 @@ const CartPage = () => {
       ) : (
         <div>
           {cartItems.map((item) => (
-            <div key={item.id} className="cart-item">
-              <img src={`${backendBaseURL}${item.image}`} alt={item.name} width="80" />
-              <div>
-                <h4>{item.name}</h4>
-                <p>Qty: {item.qty}</p>
-                <p>Price: ${item.price}</p>
-              </div>
-            </div>
+            <CartItemCard key={item.id} item={item} />
           ))}
+
+          <div className="cart-summary" style={{ marginTop: '30px', borderTop: '1px solid #ccc', paddingTop: '20px' }}>
+            <h3>Total: ${getTotalAmount()}</h3>
+            <Link to="/checkout">
+              <button style={{ padding: '10px 20px', backgroundColor: '#333', color: '#fff' }}>
+                Proceed to Checkout
+              </button>
+            </Link>
+          </div>
         </div>
       )}
     </div>

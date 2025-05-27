@@ -165,3 +165,64 @@ def add_to_cart(request):
 
     serializer = CartItemSerializer(cart)
     return Response(serializer.data, status=status.HTTP_200_OK)    
+
+
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_cart_item(request):
+    try:
+        item_id = request.data.get('product_id')
+        quantity = request.data.get('quantity')
+
+        cart = Cart.objects.get(user=request.user)
+        cart_item = CartItem.objects.get(cart=cart, product_id=item_id)
+
+        if int(quantity) <= 0:
+            cart_item.delete()
+            return Response({'message': 'Item removed from cart'}, status=200)
+
+        cart_item.quantity = quantity
+        cart_item.save()
+        serializer = CartItemSerializer(cart_item)
+        return Response(serializer.data, status=200)
+
+    except (Cart.DoesNotExist, CartItem.DoesNotExist):
+        return Response({'error': 'Cart item not found'}, status=404)
+    
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def remove_from_cart(request, pk):
+    try:
+        cart = Cart.objects.get(user=request.user)
+        item = CartItem.objects.get(cart=cart, product_id=pk)
+        item.delete()
+        return Response({'detail': 'Item removed from cart'})
+    except (Cart.DoesNotExist, CartItem.DoesNotExist):
+        return Response({'detail': 'Item not found'}, status=404)
+
+
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from .models import CartItem, Product
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_cart_item_quantity(request, pk):
+    try:
+        cart_item = CartItem.objects.get(cart__user=request.user, product_id=pk)
+        data = request.data
+        new_quantity = data.get('quantity', None)
+
+        if new_quantity is not None and int(new_quantity) > 0:
+            cart_item.quantity = int(new_quantity)
+            cart_item.save()
+            return Response({'detail': 'Quantity updated successfully.'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'detail': 'Invalid quantity.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    except CartItem.DoesNotExist:
+        return Response({'detail': 'Cart item not found.'}, status=status.HTTP_404_NOT_FOUND)

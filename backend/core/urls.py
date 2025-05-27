@@ -7,7 +7,10 @@ from .views import (
 )
 from .views import user_cart_items
 from .auth_views import RegisterView, get_profile
+from .views import remove_from_cart
 from .views import add_to_cart
+from .views import update_cart_item_quantity
+from .views import update_cart_item
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 router = DefaultRouter()
@@ -27,6 +30,9 @@ urlpatterns = [
     path('auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('cart/', user_cart_items, name='get-cart-items'),
-     path('cart/add/', add_to_cart, name='add_to_cart'),
+    path('cart/add/', add_to_cart, name='add_to_cart'),
+    path('cart/update/', update_cart_item),
+    path('cart/remove/<int:pk>/', remove_from_cart, name='remove-from-cart'), 
+    path('cart/update/<int:pk>/', update_cart_item_quantity, name='update-cart-item'),
     path('', include(router.urls)),
 ]
