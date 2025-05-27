@@ -34,12 +34,8 @@ class OrderItemSerializer(serializers.ModelSerializer):
         model = OrderItem
         fields = '__all__'
 
-class OrderSerializer(serializers.ModelSerializer):
-    items = OrderItemSerializer(many=True, read_only=True)
 
-    class Meta:
-        model = Order
-        fields = '__all__'
+
 
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -81,3 +77,42 @@ class CartSerializer(serializers.ModelSerializer):
         model = Cart
         fields = ['id', 'user', 'created_at', 'items']
         read_only_fields = ['id', 'user', 'created_at', 'items']
+
+
+
+
+
+from rest_framework import serializers
+from .models import Order, OrderItem, Product
+
+from rest_framework import serializers
+from .models import Order, OrderItem  # adjust imports as needed
+
+class OrderItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderItem
+        fields = ['product', 'quantity', 'price']
+
+class OrderSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(
+        default=serializers.CurrentUserDefault()
+    )
+    items = OrderItemSerializer(many=True)
+
+    class Meta:
+        model = Order
+        fields = ['id', 'user', 'shipping_address', 'total_price', 'items']
+        # 'user' is hidden, so not required from input
+
+    def create(self, validated_data):
+        items_data = validated_data.pop('items')
+        user = validated_data.pop('user')  # automatically set from request
+
+        # Create the Order instance
+        order = Order.objects.create(user=user, **validated_data)
+
+        # Create related order items
+        for item_data in items_data:
+            OrderItem.objects.create(order=order, **item_data)
+
+        return order

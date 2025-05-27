@@ -11,6 +11,7 @@ from .views import remove_from_cart
 from .views import add_to_cart
 from .views import update_cart_item_quantity
 from .views import update_cart_item
+from .views import OrderCreateView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 router = DefaultRouter()
@@ -34,5 +35,7 @@ urlpatterns = [
     path('cart/update/', update_cart_item),
     path('cart/remove/<int:pk>/', remove_from_cart, name='remove-from-cart'), 
     path('cart/update/<int:pk>/', update_cart_item_quantity, name='update-cart-item'),
+    path('api/orders/', OrderCreateView.as_view(), name='order-create'),
+    
     path('', include(router.urls)),
 ]

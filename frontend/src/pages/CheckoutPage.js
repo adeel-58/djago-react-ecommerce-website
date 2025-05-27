@@ -3,7 +3,9 @@ import { Row, Col, Form, Button } from 'react-bootstrap';
 import ShippingInfo from '../components/checkout/ShippingInfo';
 import OrderSummary from '../components/checkout/OrderSummary';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 const CheckoutPage = () => {
   const [formData, setFormData] = useState({
     address: '',
@@ -12,21 +14,45 @@ const CheckoutPage = () => {
     country: '',
   });
 
-  const cartItems = [
-    { id: '1', name: 'Nail Polish', price: 12.99, qty: 2 },
-    { id: '2', name: 'Stickers', price: 7.49, qty: 1 },
-  ];
-
+  const cartItems = useSelector((state) => state.cart.cartItems); // get cart items from Redux store
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log('Order Placed:', formData);
-    navigate('/'); // In real app, proceed to payment or confirmation
+
+    try {
+      // Construct payload for order creation API
+      const payload = {
+        total_price: cartItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2),
+        shipping_address: `${formData.address}, ${formData.city}, ${formData.postalCode}, ${formData.country}`,
+        items: cartItems.map(item => ({
+          product: item.id,      // Make sure your cartItems have product id
+          quantity: item.qty,
+          price: item.price,
+        })),
+      };
+
+      // Send POST request to backend order API
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`, // or your auth header logic
+        },
+      };
+
+      const { data } = await axios.post(`${API_URL}/api/orders/`, payload, config);
+
+      console.log('Order placed:', data);
+      navigate('/order-confirmation'); // or homepage
+
+    } catch (error) {
+      console.error('Failed to place order', error.response?.data || error.message);
+      alert('Failed to place order. Please try again.');
+    }
   };
 
   return (
@@ -41,7 +67,7 @@ const CheckoutPage = () => {
       </Col>
 
       <Col md={4}>
-        <OrderSummary items={cartItems} />
+        <OrderSummary />
       </Col>
     </Row>
   );

@@ -12,6 +12,7 @@ from .serializers import CartItemSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework import viewsets, status
 from .models import Cart, CartItem, Product
+from rest_framework.views import APIView
 
 
 
@@ -39,6 +40,19 @@ class ProductViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['category__slug']
     permission_classes = [AllowAny] 
+
+
+from rest_framework import generics, permissions
+from .serializers import OrderSerializer
+from .models import Order
+
+class OrderCreateView(generics.CreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 class ProductImageViewSet(viewsets.ModelViewSet):
     queryset = ProductImage.objects.all()
