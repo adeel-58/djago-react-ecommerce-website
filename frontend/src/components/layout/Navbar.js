@@ -10,6 +10,7 @@ import './Navbar.css';
 const AppNavbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
@@ -37,8 +38,9 @@ const AppNavbar = () => {
           </div>
         </div>
 
+        {/* 🛒 Cart link without item count */}
         <Link className="navbar__link" to="/cart">
-          🛒 Cart (0)
+          🛒 Cart
         </Link>
 
         {!isAuthenticated ? (
