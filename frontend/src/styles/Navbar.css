@@ -1,0 +1,296 @@
+/* Navbar.css - With Media Queries and Keyframes */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); /* Added Pacifico font for logo */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap'); /* Assuming these are your primary fonts */
+
+
+/* Base Reset & Navbar Styling */
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  font-family: 'Open Sans', sans-serif; /* Using Open Sans as a base for navbar links */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.75rem 1.5rem 0.75rem 40px; /* MODIFIED: top | right | bottom | left (ensuring left is 40px) */
+  width: 100%; /* Ensure navbar spans full width */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.navbar__container {
+  max-width: 1300px; /* Max width of the content within the navbar */
+  margin: 0 auto; /* This centers the container if viewport is wider than max-width */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Re-added for responsiveness */
+  width: 100%; /* Ensure container tries to fill navbar padding box */
+}
+
+/* Sections for layout (from your JS structure) */
+.navbar-section {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-section--left {
+  flex-shrink: 0;
+}
+
+.navbar-section--center {
+  flex-grow: 1;
+  justify-content: center;
+  gap: 15px; /* Spacing for direct categories */
+}
+.navbar__direct-categories {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between category links */
+}
+
+
+.navbar-section--right {
+  justify-content: flex-end;
+  gap: 1rem; /* Space between cart and auth block */
+  flex-shrink: 0;
+}
+
+
+/* Brand */
+.navbar__brand {
+  font-family: 'Pacifico', cursive; /* Stylish font for PetHub */
+  font-size: 2.2rem; /* Adjusted size for the new font */
+  font-weight: 400; /* Pacifico is usually best at normal weight */
+  color: #e91e63; /* Using the pink color from your provided CSS for the brand */
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding-right: 10px; /* Some space if other items are close on mobile */
+}
+
+.navbar__brand:hover {
+  color: #c2185b; /* A darker shade of pink for hover */
+}
+
+/* Search - Kept from your CSS, though not in current JS */
+.navbar__search {
+  flex: 1;
+  margin: 0 1rem;
+  min-width: 250px;
+}
+
+/* Categories Dropdown & General Dropdown Styling */
+.navbar__categories { /* This class seems unused in your current Navbar.js */
+  position: relative;
+  margin-right: 1rem;
+}
+
+.dropdown { /* For My Account */
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown__toggle {
+  font-size: 0.95rem; /* Adjusted for consistency */
+  font-weight: 600; /* Using Poppins weight */
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown__toggle:hover {
+  background-color: #f7f7f7;
+  color: #e91e63;
+}
+.dropdown__toggle::after { /* Adding an arrow to dropdown toggle */
+  content: ' ▼';
+  font-size: 0.7em;
+  margin-left: 4px;
+}
+
+
+.dropdown__menu {
+  position: absolute;
+  top: 110%; /* Position below toggle */
+  right: 0; /* Align to the right for account dropdown */
+  left: auto; /* Override default left: 0 */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 0;
+  display: none; /* Hidden by default, shown on hover */
+  min-width: 200px;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-in-out; /* Animation re-added */
+}
+
+.dropdown:hover .dropdown__menu {
+  display: block;
+}
+
+.dropdown__menu a,
+.dropdown__item.logout {
+  display: block;
+  padding: 0.6rem 1.2rem; /* Slightly more padding */
+  color: #444;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 0.9rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.dropdown__menu a:hover,
+.dropdown__item.logout:hover {
+  background-color: #f0f0f0;
+  color: #e91e63;
+}
+.dropdown__menu hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 0.4rem 0;
+}
+
+.dropdown__item.logout {
+  cursor: pointer;
+}
+
+/* Cart & General Links */
+.navbar__link {
+  font-size: 0.95rem; /* Adjusted for consistency */
+  font-weight: 600; /* Using Poppins weight */
+  font-family: 'Poppins', sans-serif;
+  color: #444;
+  text-decoration: none;
+  transition: color 0.3s;
+  padding: 0.5rem 0.3rem; /* Padding for better click area */
+  display: flex;
+  align-items: center;
+}
+.navbar__link.cart-link .cart-text {
+    margin-left: 5px;
+}
+
+
+.navbar__link:hover {
+  color: #e91e63;
+}
+
+/* Category specific links */
+.navbar__category-link {
+    font-weight: 500; /* Slightly less prominent than main nav links */
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/* Auth Links */
+.navbar__auth {
+  display: flex;
+  align-items: center; /* Vertically align login/register */
+  gap: 0.5rem; /* Reduced gap for a tighter look */
+}
+.navbar__register-btn { /* To make register look like a button */
+    background-color: #e91e63;
+    color: white !important; /* Important to override .navbar__link color */
+    padding: 0.5rem 1rem !important; /* Ensure padding is applied */
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.navbar__register-btn:hover {
+    background-color: #c2185b;
+    color: white !important;
+}
+
+/* Responsive section re-added */
+@media (max-width: 992px) { /* Adjusted breakpoint for better handling of categories */
+    .navbar__container {
+        /* Keep as flex-row but allow wrapping for sections */
+    }
+    .navbar-section--center {
+        order: 3; /* Move categories to a new line if needed */
+        width: 100%;
+        margin-top: 0.5rem;
+        justify-content: center; /* Center categories when they wrap */
+    }
+     .navbar__direct-categories {
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap; /* Allow categories themselves to wrap */
+    }
+}
+
+
+@media (max-width: 768px) {
+  .navbar__container {
+    flex-direction: column;
+    align-items: center; /* Center brand when stacked */
+  }
+  .navbar-section {
+      width: 100%;
+      justify-content: center; /* Center content of each section */
+      margin-bottom: 0.5rem;
+  }
+  .navbar-section--left, .navbar-section--right {
+      margin-bottom: 0.75rem;
+  }
+  .navbar-section--right {
+      gap: 1rem; /* Restore some gap for cart/auth when stacked */
+  }
+
+  .navbar__search { /* Kept from your CSS */
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .navbar__auth {
+    width: auto; /* Let it size to content */
+    justify-content: center;
+    gap: 0.75rem;
+    /* margin-top: 1rem; */ /* Handled by section margin */
+  }
+
+  .navbar__categories, /* Kept from your CSS */
+  .dropdown { 
+    width: auto; /* Let it size to content */
+  }
+  .account-dropdown { /* Ensure My Account dropdown is also centered */
+    display: flex;
+    justify-content: center;
+  }
+
+  .dropdown__menu {
+    width: 100%; /* Make dropdown menu full width if its parent is full width */
+    left: 50%; /* Start from center */
+    transform: translateX(-50%); /* Pull back by half its width to center */
+    min-width: 250px; /* Ensure tappable area */
+  }
+  .account-dropdown .dropdown__menu { /* Specific for account dropdown on mobile */
+      position: static; /* Make it flow in document */
+      box-shadow: none;
+      border: none;
+      border-top: 1px solid #eee;
+      margin-top: 0.5rem;
+  }
+
+  .navbar__direct-categories {
+      gap: 10px; /* Reduce gap between categories on mobile */
+  }
+  .navbar__category-link {
+      padding: 0.3rem 0.5rem; /* Smaller padding for category links */
+      font-size: 0.9rem;
+  }
+}
+
+/* @keyframes fadeIn re-added */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,254 @@
+/* src/styles/CheckoutPage.css */
+
+.checkout-page-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--text-color, #3D4A52);
+}
+
+.page-title { /* Already styled in CartPage.css, ensure consistency or move to global */
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  color: var(--text-color, #3D4A52);
+  text-align: center;
+  margin-bottom: 35px;
+  font-weight: 700;
+}
+
+.checkout-form-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Shipping info takes more space */
+  gap: 30px;
+}
+
+.shipping-info-column,
+.order-summary-column {
+  /* Basic column setup */
+}
+
+/* Shipping Info Section & Form Styling */
+.shipping-info-section {
+  background-color: var(--navbar-bg-color, #FFFFFF);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.section-subtitle { /* For "Shipping Information" and "Order Summary" */
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem; /* ~26px */
+  color: var(--text-color, #3D4A52);
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary-color, #FF6B6B);
+  display: inline-block; /* So border only spans text width */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: var(--text-color-lighter, #5a6a74);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color, #E0E0E0);
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color, #FF6B6B);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 255, 107, 107), 0.25); /* Define --primary-color-rgb */
+  outline: none;
+}
+
+/* Submit Order Button */
+.btn-submit-order { /* Uses .btn and .btn-primary from global/HomePage.css */
+  width: 100%;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-size: 1.1rem;
+  margin-top: 20px; /* Space above button */
+  letter-spacing: 0.5px;
+}
+.btn-submit-order:disabled {
+  background-color: #cccccc;
+  border-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #D8000C; /* Standard error red */
+  background-color: #FFD2D2; /* Light red background */
+  border: 1px solid #D8000C;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+
+/* Order Summary Card Styling */
+.order-summary-card {
+  background-color: #f9f9f9; /* Slightly different background for summary */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  height: fit-content; /* So it doesn't stretch unnecessarily */
+  position: sticky;
+  top: calc(var(--navbar-height, 70px) + 20px); /* Adjust if navbar height changes */
+}
+
+.summary-items-preview {
+  margin-bottom: 20px;
+  max-height: 200px; /* Limit height and make scrollable if many items */
+  overflow-y: auto;
+  padding-right: 10px; /* For scrollbar */
+}
+.summary-items-preview::-webkit-scrollbar {
+  width: 6px;
+}
+.summary-items-preview::-webkit-scrollbar-thumb {
+  background-color: var(--border-color, #E0E0E0);
+  border-radius: 3px;
+}
+
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border-color, #E0E0E0);
+}
+.summary-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.summary-item-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.summary-item-details {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.summary-item-name {
+  font-size: 0.9rem;
+  color: var(--text-color, #3D4A52);
+  font-weight: 500;
+}
+
+.summary-item-price {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-color-lighter, #5a6a74);
+}
+
+.empty-summary-message {
+    font-size: 0.9rem;
+    color: var(--text-color-lighter, #5a6a74);
+    text-align: center;
+    padding: 10px 0;
+}
+
+.summary-calculation {
+  /* Styles for subtotal, shipping, tax, total */
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: var(--text-color-lighter, #5a6a74);
+}
+.summary-line span:last-child {
+  font-weight: 600;
+  color: var(--text-color, #3D4A52);
+}
+
+.summary-divider {
+  border: 0;
+  border-top: 1px solid var(--border-color, #E0E0E0);
+  margin: 15px 0;
+}
+
+.total-line {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color, #FF6B6B) !important; /* Make total prominent */
+}
+.total-line span {
+    color: var(--primary-color, #FF6B6B) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .checkout-form-layout {
+    grid-template-columns: 1fr; /* Stack shipping and summary */
+  }
+  .order-summary-card {
+    position: static; /* Remove sticky when stacked */
+    margin-top: 30px;
+  }
+  .section-subtitle {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  .checkout-page-container {
+    margin-top: 20px;
+    padding: 15px;
+  }
+  .shipping-info-section, .order-summary-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.8rem;
+  }
+  .section-subtitle {
+    font-size: 1.25rem;
+  }
+  .form-control, .summary-line {
+    font-size: 0.9rem;
+  }
+  .total-line {
+    font-size: 1.1rem;
+  }
+  .btn-submit-order {
+    font-size: 1rem;
+  }
+}

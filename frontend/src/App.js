@@ -12,7 +12,7 @@ import RegisterPage from './pages/RegisterPage';
 import CheckoutPage from './pages/CheckoutPage';
 import CategoryPage from './pages/CategoryPage';
 import SearchResultsPage from './pages/SearchResultsPage';
-import ProfilePage from './pages/ProfilePage';
+//import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import Dashboard from './components/account/Dashboard';
 import Orders from './components/account/Orders';
@@ -20,7 +20,7 @@ import Addresses from './components/account/Addresses';
 import AccountDetails from './components/account/AccountDetails';
 //import CategoryProductsPage from './pages/CategoryPage';
 import ProductDetailPage from './pages/ProductPage';
-import OrdersPage from './pages/OrdersPage';
+//import OrdersPage from './pages/OrdersPage';
 
 
 const App = () => {
@@ -38,7 +38,6 @@ const App = () => {
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/category/:slug" element={<CategoryPage />} />
             <Route path="/search" element={<SearchResultsPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
             <Route path="*" element={<NotFoundPage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<LoginPage />} />
@@ -49,7 +48,7 @@ const App = () => {
             <Route path="/category/:slug" element={<CategoryPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/product/:id" element={<ProductDetailPage />} />
-            <Route path="/account/orders" element={<OrdersPage />} />
+            
 
             
           </Routes>

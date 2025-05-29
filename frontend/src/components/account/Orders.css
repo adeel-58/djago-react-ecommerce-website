@@ -1,71 +1,171 @@
-.orders-page {
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
-  font-family: 'Segoe UI', sans-serif;
+/* src/styles/OrdersPage.css */
+/* Updated to match the new OrdersPage.js structure */
+
+/* Assuming :root variables and global .btn styles are defined elsewhere */
+
+.orders-page { /* Changed from .orders-page-container */
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--text-color, #3D4A52);
 }
 
-h2 {
+/* Page Title (h2 in your new JS) */
+.orders-page > h2 { 
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  color: var(--text-color, #3D4A52);
   text-align: center;
-  margin-bottom: 2rem;
-  color: #333;
+  margin-bottom: 35px;
+  font-weight: 700;
+}
+
+.loading, /* Class from your new JS */
+.error,   /* Class from your new JS */
+.no-orders { /* Class from your new JS */
+  text-align: center;
+  padding: 40px 20px;
+  background-color: var(--navbar-bg-color, #FFFFFF);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: var(--text-color-lighter, #5a6a74);
+}
+
+.error { /* Specific styling for error messages */
+  color: #D8000C; 
+  background-color: #FFD2D2; 
+  border: 1px solid #D8000C;
+  font-size: 1rem; /* Match other error messages */
+}
+
+.no-orders {
+  /* .no-orders-message p styling can be adapted here if needed */
 }
 
 .orders-list {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
-.order-card {
-  background: #f8f8f8;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+.order-card { /* Changed from .order-item-card */
+  background-color: var(--navbar-bg-color, #FFFFFF);
+  border: 1px solid var(--border-color, #E0E0E0);
+  border-radius: 10px;
+  padding: 20px 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s ease;
 }
 
+.order-card:hover {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Order ID (h3 in your new JS) */
+.order-card > h3 { 
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem; /* ~22px */
+  font-weight: 600;
+  color: var(--primary-color, #FF6B6B); 
+  margin: 0 0 15px 0; /* Added bottom margin */
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border-color, #E0E0E0);
+}
+
+/* Styling for the list of items within an order */
 .order-items {
-  list-style: none;
-  padding: 0;
-  margin-top: 1rem;
+  list-style-type: none;
+  padding: 0 0 10px 0; /* Remove left padding, add bottom padding */
+  margin: 0 0 15px 0; /* Add bottom margin */
+  font-size: 0.95rem;
 }
 
 .order-item {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #ddd;
+  align-items: center;
+  padding: 8px 0; /* Padding for each item line */
+  border-bottom: 1px solid var(--border-color-lighter, #f5f5f5); /* Lighter border for items */
+  color: var(--text-color-lighter, #5a6a74);
+}
+.order-item:last-child {
+  border-bottom: none;
 }
 
-.product-name {
+.order-item .product-name {
+  flex-grow: 1; /* Allow product name to take space */
   font-weight: 500;
-  flex: 2;
+  color: var(--text-color, #3D4A52);
 }
 
-.quantity {
-  flex: 1;
-  text-align: center;
-  color: #666;
+.order-item .quantity {
+  margin: 0 15px; /* Space around quantity */
+  font-style: italic;
 }
 
-.price {
-  flex: 1;
+.order-item .price {
+  font-weight: 500;
+  min-width: 60px; /* Ensure price aligns well */
   text-align: right;
-  color: #333;
 }
 
 .total-amount {
-  margin-top: 1rem;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color, #E0E0E0);
   text-align: right;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #222;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary-color, #FF6B6B);
 }
 
-.loading,
-.error,
-.no-orders {
-  text-align: center;
-  color: #666;
-  margin-top: 2rem;
+.total-amount strong {
+  /* The strong tag is already bold, color inherited */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .orders-page > h2 { /* Target h2 directly */
+    font-size: 2rem;
+  }
+  .orders-page { /* Target .orders-page directly */
+    margin-top: 20px;
+    padding: 15px;
+  }
+  .order-card {
+    padding: 15px 20px;
+  }
+  .order-card > h3 { /* Target h3 directly */
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .orders-page > h2 { /* Target h2 directly */
+    font-size: 1.8rem;
+  }
+  .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .order-item .product-name,
+  .order-item .quantity,
+  .order-item .price {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+  }
+  .order-item .price {
+    font-weight: bold; /* Make price stand out more when stacked */
+  }
+  .total-amount {
+    font-size: 1.1rem;
+    text-align: left; /* Align total to left when items are stacked */
+  }
 }

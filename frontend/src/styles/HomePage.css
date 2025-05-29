@@ -1,0 +1,209 @@
+/* src/styles/HomePage.css */
+
+/* General Page & Section Styling (Keep existing styles) */
+.homepage {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--text-color, #3D4A52);
+}
+
+.section-title {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem; /* ~35px */
+  color: var(--text-color, #3D4A52);
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Hero Section Styling (common styles) */
+.hero-section {
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.85); /* Adjusted base brightness */
+  opacity: 0.6; /* MODIFIED: Added opacity to make images more faded */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35); /* Slightly increased overlay for contrast */
+  z-index: 2;
+}
+
+.hero-section .hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+}
+
+.hero-section .hero-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.hero-section .hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 35px;
+  line-height: 1.6;
+  color: #f0f0f0;
+}
+
+/* Main Hero Specifics */
+.main-hero {
+  /* background-color: var(--secondary-color, #FFD166); */ /* Can be a fallback */
+}
+/* Specific filter for main hero image if needed, otherwise general .hero-background-image style applies */
+.main-hero .hero-background-image {
+  /* filter: brightness(0.6) contrast(1.1); */ /* Example: Keeping this allows more specific control */
+  /* If you want the general opacity and brightness to apply, remove or comment out the line above */
+}
+.main-hero .hero-overlay {
+  /* background-color: rgba(40, 100, 90, 0.2); */ /* Example: a subtle teal tint */
+  /* Using the general overlay, or uncomment and customize */
+}
+
+
+/* Motivational Hero Specifics */
+.motivational-hero {
+   /* background-color: var(--primary-color-light, #ff8c8c); */
+}
+.motivational-hero .hero-title {
+  font-size: 2.6rem;
+}
+/* Specific filter for motivational hero image if needed */
+.motivational-hero .hero-background-image {
+  /* filter: brightness(0.65); */
+  /* If you want the general opacity and brightness to apply, remove or comment out the line above */
+}
+.motivational-hero .hero-overlay {
+  /* background-color: rgba(var(--primary-color-rgb, 255, 107, 107), 0.3); */
+  /* Using the general overlay, or uncomment and customize */
+}
+
+
+/* General Button Styling (Keep existing styles) */
+.btn {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 14px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--primary-color, #FF6B6B);
+  color: var(--button-text-color, #FFFFFF);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.btn-primary:hover {
+  background-color: var(--link-hover-color, #FF8C8C);
+  color: var(--button-text-color, #FFFFFF);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--primary-color-rgb, 255, 107, 107),0.4);
+}
+
+.btn-secondary {
+  background-color: var(--button-text-color, #FFFFFF);
+  color: var(--primary-color, #FF6B6B);
+   border-color: var(--primary-color, #FF6B6B);
+}
+.btn-secondary:hover {
+  background-color: var(--primary-color, #FF6B6B);
+  color: var(--button-text-color, #FFFFFF);
+  border-color: var(--primary-color, #FF6B6B);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary-color, #FF6B6B);
+  border-color: var(--primary-color, #FF6B6B);
+}
+.btn-outline:hover {
+  background-color: var(--primary-color, #FF6B6B);
+  color: var(--button-text-color, #FFFFFF);
+}
+
+
+/* Featured Products Section (Keep existing styles) */
+.featured-products-section {
+  padding: 20px;
+  max-width: var(--container-max-width, 1200px);
+  margin: 0 auto 40px auto;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* Responsive adjustments for hero sections (Keep existing, may need tweaks) */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 20px;
+  }
+  .hero-section .hero-title {
+    font-size: 2.2rem;
+  }
+  .main-hero .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-section .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .btn {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section .hero-title {
+    font-size: 2rem;
+  }
+   .main-hero .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-section .hero-subtitle {
+    font-size: 1rem;
+  }
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+}

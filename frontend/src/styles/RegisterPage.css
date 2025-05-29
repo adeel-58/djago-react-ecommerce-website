@@ -1,0 +1,164 @@
+/* src/styles/RegisterPage.css */
+
+/* This file assumes that common auth page styles (like .auth-page-container, 
+  .auth-form-container, .auth-title, .form-group, .form-label, .form-control, 
+  .btn, .btn-primary, .auth-submit-button, .auth-error-message, .auth-redirect-link) 
+  are either:
+  1. Defined in a global CSS file (e.g., App.css, index.css, or a dedicated auth.css) 
+     that is imported before this.
+  2. Or, you can copy those styles from LoginPage.css directly into this file.
+
+  The styles below are a complete set, assuming this might be the primary
+  source for these auth-related classes if not defined globally.
+*/
+
+/* Example: If you wanted a slightly different background for the register page container */
+.auth-page-container.register-page-variant {
+  /* background-color: #e0f7fa; */ /* Example: A slightly different light blue */
+  /* Or keep it the same as login by not overriding if .auth-page-container is styled globally */
+}
+
+/* Specific adjustments for the register form, if any */
+.auth-form-container .auth-title.register-title { /* Example of more specific selector if needed */
+  /* If the title needs to be different for register */
+  /* color: var(--secondary-color, #FFD166); */ 
+}
+
+.auth-form-container .auth-subtitle.register-subtitle {
+  /* Adjust subtitle styling if needed */
+}
+
+/* Styles for Auth Pages (Login & Register) */
+.auth-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - var(--navbar-height, 70px) - 50px); /* Adjust 50px for potential footer height */
+  padding: 40px 20px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fdf6e3; /* A very light, warm, pet-friendly background */
+  /* Or use a subtle pattern: */
+  /* background-image: url('/path-to-subtle-pet-pattern.png'); */
+}
+
+.auth-form-container {
+  background-color: var(--navbar-bg-color, #FFFFFF);
+  padding: 30px 40px; /* Increased padding */
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 480px; /* Max width for the form box, can be adjusted */
+  text-align: center; /* Center title and subtitle */
+}
+
+.auth-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem; /* ~35px */
+  color: var(--primary-color, #FF6B6B); /* Use primary color for title */
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.auth-subtitle {
+  font-size: 1rem; /* ~16px */
+  color: var(--text-color-lighter, #5a6a74);
+  margin-bottom: 30px;
+}
+
+.auth-error-message {
+  color: #D8000C; /* Standard error red */
+  background-color: #FFD2D2; /* Light red background */
+  border: 1px solid #D8000C;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  text-align: left; /* Align error text to left for readability */
+}
+
+.auth-form {
+  text-align: left; /* Align form elements to the left */
+}
+
+.form-group {
+  margin-bottom: 18px; /* Slightly less margin for more fields like in register */
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-color, #3D4A52);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color, #E0E0E0);
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color, #FF6B6B);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 255, 107, 107), 0.25); /* Define --primary-color-rgb globally */
+  outline: none;
+}
+
+.auth-submit-button { /* Assumes .btn and .btn-primary are styled globally */
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 1.1rem;
+  margin-top: 15px; 
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+.auth-submit-button:disabled {
+  background-color: #cccccc;
+  border-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.auth-redirect-link {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  color: var(--text-color, #3D4A52);
+  text-align: center;
+}
+
+.auth-redirect-link a {
+  color: var(--primary-color, #FF6B6B);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-redirect-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .auth-form-container {
+    padding: 25px 20px;
+    max-width: 100%; /* Allow form to take full width on small screens */
+  }
+  .auth-title {
+    font-size: 1.8rem;
+  }
+  .auth-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  .form-control {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+  .auth-submit-button {
+    font-size: 1rem;
+  }
+}

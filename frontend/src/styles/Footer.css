@@ -1,0 +1,139 @@
+/* src/styles/Footer.css */
+
+/* Assuming :root variables (like --primary-color, --text-color, etc.) 
+   and global font imports (Poppins, Open Sans) are defined in a global CSS file.
+*/
+
+.site-footer {
+  background-color: #fdf0e0; /* A very light, warm, pet-friendly beige/cream */
+  color: var(--text-color-lighter, #5a6a74); /* Default text color for footer */
+  padding: 40px 20px; /* Vertical and horizontal padding */
+  border-top: 2px solid var(--primary-color-light, #FFD166); /* Using secondary as a light accent */
+  font-family: 'Open Sans', sans-serif;
+  margin-top: auto; /* Pushes footer to the bottom if content is short */
+}
+
+.footer-container {
+  max-width: 1200px; /* Consistent max-width */
+  margin: 0 auto;
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+  justify-content: space-between;
+  gap: 20px; /* Gap between columns */
+  margin-bottom: 30px;
+}
+
+.footer-col {
+  flex: 1; /* Allow columns to share space */
+  min-width: 220px; /* Minimum width before wrapping */
+  padding: 0 10px; /* Slight padding within columns */
+}
+
+.footer-col-brand {
+  flex-basis: 30%; /* Give brand column a bit more initial space */
+}
+
+.footer-brand-name {
+  font-family: 'Pacifico', cursive; /* Using the stylish logo font */
+  font-size: 2rem; /* ~32px */
+  color: var(--primary-color, #FF6B6B); /* Primary color for brand */
+  margin: 0 0 10px 0;
+}
+
+.footer-tagline {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-color-lighter, #5a6a74);
+}
+
+.footer-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem; /* ~18px */
+  font-weight: 600;
+  color: var(--text-color, #3D4A52);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-links-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links-list li {
+  margin-bottom: 10px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: var(--text-color-lighter, #5a6a74);
+  font-size: 0.95rem;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--primary-color, #FF6B6B);
+  padding-left: 5px; /* Slight indent on hover */
+}
+
+.footer-contact-info {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.footer-divider {
+  border: 0;
+  border-top: 1px solid var(--border-color-lighter, #e0cbb3); /* Lighter divider within footer */
+  margin: 25px 0;
+}
+
+.footer-copyright {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-color-lighter, #777);
+  margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .footer-row {
+    flex-direction: column; /* Stack columns */
+    align-items: center; /* Center content when stacked */
+    text-align: center;
+  }
+  .footer-col {
+    min-width: 100%; /* Full width for stacked columns */
+    margin-bottom: 25px;
+  }
+  .footer-col:last-child {
+    margin-bottom: 0;
+  }
+  .footer-links-list {
+    /* If you want links to be centered too when stacked */
+    /* display: inline-block; */ 
+  }
+}
+
+@media (max-width: 480px) {
+  .site-footer {
+    padding: 30px 15px;
+  }
+  .footer-brand-name {
+    font-size: 1.8rem;
+  }
+  .footer-heading {
+    font-size: 1rem;
+  }
+  .footer-tagline,
+  .footer-link,
+  .footer-contact-info,
+  .footer-copyright {
+    font-size: 0.9rem;
+  }
+}
