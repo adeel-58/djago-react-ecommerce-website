@@ -1,11 +1,23 @@
 import React from 'react';
 import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap';
+import { getProductImage, getProductDescription } from '../../utils/productAssets';
 
 const ProductDetail = ({ product }) => {
+  const productImage = getProductImage(product.name);
+  const description = getProductDescription(product.name);
+
   return (
     <Row>
       <Col md={6}>
-        <Image src={product.image} alt={product.name} fluid />
+        <Image
+          src={productImage}
+          alt={product.name || 'Product'}
+          fluid
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = getProductImage(); // fallback default image
+          }}
+        />
       </Col>
 
       <Col md={3}>
@@ -14,10 +26,10 @@ const ProductDetail = ({ product }) => {
             <h3>{product.name}</h3>
           </ListGroup.Item>
           <ListGroup.Item>
-            <strong>Price:</strong> ${product.price}
+            <strong>Price:</strong> ${parseFloat(product.price || 0).toFixed(2)}
           </ListGroup.Item>
           <ListGroup.Item>
-            <strong>Description:</strong> {product.description}
+            <strong>Description:</strong> {description}
           </ListGroup.Item>
         </ListGroup>
       </Col>
@@ -26,7 +38,7 @@ const ProductDetail = ({ product }) => {
         <Card>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <strong>Price:</strong> ${product.price}
+              <strong>Price:</strong> ${parseFloat(product.price || 0).toFixed(2)}
             </ListGroup.Item>
             <ListGroup.Item>
               <strong>Status:</strong> {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}

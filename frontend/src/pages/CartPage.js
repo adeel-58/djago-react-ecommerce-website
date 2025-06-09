@@ -11,7 +11,7 @@ import {
 import CartItemCard from '../components/cart/CartItemCard'; // Assuming this path
 import '../styles/CartPage.css'; // Styles for CartPage
 
-const backendBaseURL = 'http://localhost:8000';
+const backendBaseURL = 'http://127.0.0.1:8000';
 
 const CartPage = () => {
   const dispatch = useDispatch();

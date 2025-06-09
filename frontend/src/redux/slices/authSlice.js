@@ -7,7 +7,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/token/', credentials);
+      const response = await axios.post('http://127.0.0.1:8000/api/auth/token/', credentials);
       const data = response.data;
 
       // Save tokens
@@ -29,7 +29,7 @@ export const registerUser = createAsyncThunk(
   async (userData, thunkAPI) => {
     try {
       // Register the user
-      await axios.post('http://localhost:8000/api/auth/register/', userData);
+      await axios.post('http://127.0.0.1:8000/api/auth/register/', userData);
 
       // Automatically log in the user
       const loginData = {

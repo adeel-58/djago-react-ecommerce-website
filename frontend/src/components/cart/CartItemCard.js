@@ -7,15 +7,15 @@ import {
   updateCartItemQuantity, // This is your thunk for backend + Redux
 } from '../../redux/slices/cartSlice';
 import '../../styles/CartItemCard.css'; // Import the CSS file
-
-const backendBaseURL = 'http://localhost:8000';
+import { getProductImage } from '../../utils/productAssets';
+const backendBaseURL = 'http://127.0.0.1:8000';
 
 const CartItemCard = ({ item }) => {
   const dispatch = useDispatch();
 
   // Token should ideally be retrieved from Redux store if user is authenticated
-  const token = localStorage.getItem('access_token'); 
-  
+  const token = localStorage.getItem('access_token');
+
   const config = { // Define config once if token is available
     headers: {
       Authorization: `Bearer ${token}`,
@@ -24,10 +24,10 @@ const CartItemCard = ({ item }) => {
 
   const handleRemove = async () => {
     if (!token) { // Or check authentication status from Redux
-        console.warn("No token found, cannot remove item from backend.");
-        // Optionally dispatch removeFromCart(item.id) to remove from local Redux state anyway for guests
-        // dispatch(removeFromCart(item.id)); 
-        return;
+      console.warn("No token found, cannot remove item from backend.");
+      // Optionally dispatch removeFromCart(item.id) to remove from local Redux state anyway for guests
+      // dispatch(removeFromCart(item.id)); 
+      return;
     }
 
     try {
@@ -47,24 +47,31 @@ const CartItemCard = ({ item }) => {
     // without trying to call the backend.
     // For now, assuming `updateCartItemQuantity` thunk handles auth check or token presence.
     if (!token) {
-        console.warn("No token, attempting local quantity update (if your thunk/slice supports it)");
-        // Example for local-only update (you'd need a different action or logic in slice)
-        // dispatch(localUpdateCartItemQuantity({ id: item.id, qty: newQty }));
-        // For now, the thunk will likely fail or do nothing if no token.
+      console.warn("No token, attempting local quantity update (if your thunk/slice supports it)");
+      // Example for local-only update (you'd need a different action or logic in slice)
+      // dispatch(localUpdateCartItemQuantity({ id: item.id, qty: newQty }));
+      // For now, the thunk will likely fail or do nothing if no token.
     }
-    
+
     dispatch(updateCartItemQuantity({ id: item.id, qty: newQty }));
   };
-  
-  const productImage = item.image ? `${backendBaseURL}${item.image}` : 'https://placehold.co/100x100/FF6B6B/FFFFFF?text=Pet+Item';
+
+
+
+  const productImage = getProductImage(item.name);
+
 
   return (
     <div className="cart-item">
-      <img 
-        src={productImage} 
-        alt={item.name || 'Product'} 
-        onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/100x100/CCCCCC/FFFFFF?text=No+Image'; }}
+      <img
+        src={productImage}
+        alt={item.name || 'Product'}
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = getProductImage(); // fallback to default image
+        }}
       />
+
       <div className="cart-item-details-container">
         <h4>{item.name || 'Product Name'}</h4>
         <p className="item-price">Price: ${parseFloat(item.price || 0).toFixed(2)}</p>

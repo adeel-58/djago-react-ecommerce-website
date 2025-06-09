@@ -18,7 +18,7 @@ const HomePage = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/products/?limit=8')
+    axios.get('http://127.0.0.1:8000/api/products/?limit=8')
       .then(response => setProducts(response.data.results || response.data))
       .catch(error => console.error('Error fetching products:', error));
   }, []);
