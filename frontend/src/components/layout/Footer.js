@@ -1,42 +1,75 @@
-// src/components/layout/Footer.js
 import React from 'react';
-// Removed Container, Row, Col from react-bootstrap to use custom div structure
 import { Link } from 'react-router-dom';
 import '../../styles/Footer.css'; // We will create this CSS file
+import facebookIcon from '../../icons/facebook.png';
+import instagramIcon from '../../icons/instagram.png';
+import pinterestIcon from '../../icons/pinterest.png'; // Assuming this replaces Twitter based on common social media sets
+import logo from '../../icons/l.png'; // Import your actual logo
 
 const Footer = () => {
-  return (
-    <footer className="site-footer">
-      <div className="footer-container">
-        <div className="footer-row">
-          <div className="footer-col footer-col-brand">
-            <h5 className="footer-brand-name">PetHub</h5> {/* Changed from MyStore */}
-            <p className="footer-tagline">Your pet's favorite online destination.</p>
-          </div>
+    return (
+        <footer className="footer-container">
+            <div className="footer-content">
+                {/* Left Section: Logo, Stay in touch, Newsletter */}
+                <div className="footer-section footer-left">
+                    <div className="footer-logo">
+                        {/* Using your actual logo image */}
+                        <img src={logo} alt="Nailova Logo" />
+                    </div>
+                    <h3 className="stay-in-touch">Stay in touch!</h3>
+                    <p className="newsletter-text">
+                        Sign up for our newsletter to get exclusive updates, deals, and promotions.
+                    </p>
+                    <div className="newsletter-form">
+                        <input type="email" placeholder="Email" className="newsletter-input" />
+                        <button type="submit" className="newsletter-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="arrow-icon">
+                                <path fillRule="evenodd" d="M3.75 12a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H4.5a.75.75 0 01-.75-.75z" clipRule="evenodd" />
+                                <path fillRule="evenodd" d="M16.28 17.72a.75.75 0 010-1.06l2.47-2.47H4.5a.75.75 0 010-1.5h14.25l-2.47-2.47a.75.75 0 011.06-1.06l3.75 3.75a.75.75 0 010 1.06l-3.75 3.75a.75.75 0 01-1.06 0z" clipRule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div className="social-icons">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                            <img src={facebookIcon} alt="Facebook" className="social-icon-img" />
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                            <img src={instagramIcon} alt="Instagram" className="social-icon-img" />
+                        </a>
+                        <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                            <img src={pinterestIcon} alt="Pinterest" className="social-icon-img" />
+                        </a>
+                    </div>
+                </div>
 
-          <div className="footer-col footer-col-links">
-            <h6 className="footer-heading">Quick Links</h6>
-            <ul className="footer-links-list">
-              <li><Link className="footer-link" to="/">Home</Link></li>
-              <li><Link className="footer-link" to="/products">Shop</Link></li> {/* Assuming /products for shop */}
-              <li><Link className="footer-link" to="/cart">Cart</Link></li>
-              <li><Link className="footer-link" to="/login">Login</Link></li>
-              {/* Add more links like About Us, Contact, FAQ etc. */}
-            </ul>
-          </div>
+                {/* Middle Section: Shop Links */}
+                <div className="footer-section footer-middle">
+                    <h3 className="section-title">Shop</h3>
+                    <ul className="footer-links">
+                        <li><Link to="/shop/dip-powder">Dip Powder</Link></li>
+                        <li><Link to="/shop/gel-polish">Gel Polish</Link></li>
+                        <li><Link to="/shop/nail-care">Nail Care</Link></li>
+                        <li><Link to="/shop/nail-essentials">Nail Essentials</Link></li>
+                        <li><Link to="/shop/removal">Removal</Link></li>
+                    </ul>
+                </div>
 
-          <div className="footer-col footer-col-contact">
-            <h6 className="footer-heading">Contact Us</h6>
-            <p className="footer-contact-info">Email: support@pethub.com</p>
-            <p className="footer-contact-info">Phone: +1 234 567 890</p>
-            {/* Add social media icons/links here if desired */}
-          </div>
-        </div>
-        <hr className="footer-divider" />
-        <p className="footer-copyright">&copy; {new Date().getFullYear()} PetHub. All rights reserved.</p>
-      </div>
-    </footer>
-  );
+                {/* Right Section: Learn & Help & Support Links */}
+                <div className="footer-section footer-right">
+                    <h3 className="section-title">Learn</h3>
+                    <ul className="footer-links">
+                        <li><Link to="/learn/about-us">About Us</Link></li>
+                        <li><Link to="/learn/reviews">Reviews</Link></li>
+                    </ul>
+                    <h3 className="section-title help-support-title">Help & Support</h3>
+                    <ul className="footer-links">
+                        <li><Link to="/support/30-day-guarantee">30 Day Guarantee</Link></li>
+                        <li><Link to="/support/contact-us">Contact Us</Link></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    );
 };
 
 export default Footer;

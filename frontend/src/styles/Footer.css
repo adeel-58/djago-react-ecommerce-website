@@ -1,139 +1,204 @@
-/* src/styles/Footer.css */
-
-/* Assuming :root variables (like --primary-color, --text-color, etc.) 
-   and global font imports (Poppins, Open Sans) are defined in a global CSS file.
-*/
-
-.site-footer {
-  background-color: #fdf0e0; /* A very light, warm, pet-friendly beige/cream */
-  color: var(--text-color-lighter, #5a6a74); /* Default text color for footer */
-  padding: 40px 20px; /* Vertical and horizontal padding */
-  border-top: 2px solid var(--primary-color-light, #FFD166); /* Using secondary as a light accent */
-  font-family: 'Open Sans', sans-serif;
-  margin-top: auto; /* Pushes footer to the bottom if content is short */
-}
+/* Footer.css */
 
 .footer-container {
-  max-width: 1200px; /* Consistent max-width */
-  margin: 0 auto;
+    background-color: #f7b0ad ; /* Updated background color */
+    padding: 40px 20px;
+    font-family: 'Inter', sans-serif; /* Using Inter as per instructions */
+    color: #113f3d; /* Updated font color */
+    
+    margin-top: 20px; /* Add some margin from the content above */
 }
 
-.footer-row {
-  display: flex;
-  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
-  justify-content: space-between;
-  gap: 20px; /* Gap between columns */
-  margin-bottom: 30px;
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px; /* Space between sections */
 }
 
-.footer-col {
-  flex: 1; /* Allow columns to share space */
-  min-width: 220px; /* Minimum width before wrapping */
-  padding: 0 10px; /* Slight padding within columns */
+.footer-section {
+    flex: 1;
+    min-width: 250px; /* Minimum width for sections to wrap nicely */
+    padding: 15px;
 }
 
-.footer-col-brand {
-  flex-basis: 30%; /* Give brand column a bit more initial space */
+/* Left Section Styles */
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 6;
 }
 
-.footer-brand-name {
-  font-family: 'Pacifico', cursive; /* Using the stylish logo font */
-  font-size: 2rem; /* ~32px */
-  color: var(--primary-color, #FF6B6B); /* Primary color for brand */
-  margin: 0 0 10px 0;
+.footer-logo img {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 5px; /* Rounded corners for the logo */
 }
 
-.footer-tagline {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--text-color-lighter, #5a6a74);
+.stay-in-touch {
+    font-size: 1.25rem; /* Updated font size for headings */
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #113f3d; /* Updated font color */
 }
 
-.footer-heading {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem; /* ~18px */
-  font-weight: 600;
-  color: var(--text-color, #3D4A52);
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.newsletter-text {
+    font-size: 0.938rem; /* Updated font size for paragraphs/small texts */
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #555;
 }
 
-.footer-links-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.newsletter-form {
+    display: flex;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    border-radius: 25px; /* Rounded corners for the entire form */
+    overflow: hidden; /* Ensures input and button corners are rounded */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.footer-links-list li {
-  margin-bottom: 10px;
+.newsletter-input {
+    flex-grow: 1;
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    font-size: 0.938rem; /* Updated font size for paragraphs/small texts */
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 
-.footer-link {
-  text-decoration: none;
-  color: var(--text-color-lighter, #5a6a74);
-  font-size: 0.95rem;
-  transition: color 0.3s ease, padding-left 0.3s ease;
+.newsletter-button {
+    background-color: #333; /* Dark button background */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    transition: background-color 0.3s ease;
 }
 
-.footer-link:hover {
-  color: var(--primary-color, #FF6B6B);
-  padding-left: 5px; /* Slight indent on hover */
+.newsletter-button:hover {
+    background-color: #555;
 }
 
-.footer-contact-info {
-  font-size: 0.95rem;
-  margin-bottom: 8px;
-  line-height: 1.6;
+.arrow-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
 }
 
-.footer-divider {
-  border: 0;
-  border-top: 1px solid var(--border-color-lighter, #e0cbb3); /* Lighter divider within footer */
-  margin: 25px 0;
+.social-icons {
+    display: flex;
+    gap: 15px;
 }
 
-.footer-copyright {
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--text-color-lighter, #777);
-  margin: 0;
+.social-icon {
+    /* Removed font-size and color as these are now image icons */
+    transition: transform 0.3s ease; /* Added transition for hover effect */
+    border-radius: 50%; /* Make social icons circular */
+    padding: 0px; /* Add padding for better touch target */
+    background-color: rgba(255, 255, 255, 0.5); /* Slightly transparent background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex; /* To center the image within the circular background */
+    align-items: center;
+    justify-content: center;
 }
 
-/* Responsive Adjustments */
+
+
+.social-icon-img {
+    width: 35px; /* Set a specific width for the social icon images */
+    height: 35px; /* Set a specific height for the social icon images */
+    
+    image-rendering: auto; 
+}
+
+
+/* Middle and Right Section Styles */
+.footer-section .section-title { /* Made selector more specific */
+    font-size: 1.25rem; /* Updated font size for headings */
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #113f3d; /* Updated font color */
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.938rem; /* Updated font size for paragraphs/small texts */
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #0a2826; /* Changed hover color to a darker shade */
+}
+
+.footer-section .help-support-title { /* Made selector more specific */
+    margin-top: 25px; /* Space between Learn and Help & Support */
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .footer-row {
-    flex-direction: column; /* Stack columns */
-    align-items: center; /* Center content when stacked */
-    text-align: center;
-  }
-  .footer-col {
-    min-width: 100%; /* Full width for stacked columns */
-    margin-bottom: 25px;
-  }
-  .footer-col:last-child {
-    margin-bottom: 0;
-  }
-  .footer-links-list {
-    /* If you want links to be centered too when stacked */
-    /* display: inline-block; */ 
-  }
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-middle,
+    .footer-right {
+        min-width: unset;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .newsletter-form {
+        max-width: 80%; /* Adjust for smaller screens */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 480px) {
-  .site-footer {
-    padding: 30px 15px;
-  }
-  .footer-brand-name {
-    font-size: 1.8rem;
-  }
-  .footer-heading {
-    font-size: 1rem;
-  }
-  .footer-tagline,
-  .footer-link,
-  .footer-contact-info,
-  .footer-copyright {
-    font-size: 0.9rem;
-  }
+    .footer-container {
+        padding: 30px 10px;
+    }
+
+    .stay-in-touch {
+        font-size: 1.3rem; /* Kept existing responsive font size for mobile */
+    }
+
+    .newsletter-input,
+    .newsletter-button {
+        padding: 10px 15px;
+    }
+
+    .social-icon {
+        /* Adjusted for smaller screens if needed, but social-icon-img will control size */
+    }
 }

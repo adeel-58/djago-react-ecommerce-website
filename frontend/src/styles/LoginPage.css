@@ -1,45 +1,50 @@
 /* src/styles/LoginPage.css */
 
-/* Assuming :root variables (like --primary-color, --text-color, etc.) 
-   are defined in a global CSS file (e.g., App.css or index.css) 
-   and imported before this.
-   If not, you'll need to define them here or use direct hex codes.
+/*
+  This CSS file has been updated to align with the styling conventions
+  defined in HomePage.css, ProductDetailPage.css, and CartPage.css.
+  Colors, font families, font sizes, font weights, padding, and button styles
+  have been harmonized for a consistent website look.
 */
+
+/* --- GOOGLE FONT IMPORT (Ensure all needed weights are here) --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 .auth-page-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - var(--navbar-height, 70px) - 50px); /* Adjust 50px for potential footer height */
+  /* Adjusted min-height to account for the new margin */
+  min-height: calc(100vh - 200px - 40px); /* Adjusting based on new margin values */
   padding: 40px 20px;
-  font-family: 'Open Sans', sans-serif;
-  background-color: #fdf6e3; /* A very light, warm, pet-friendly background */
-  /* Or use a subtle pattern: */
-  /* background-image: url('/path-to-subtle-pet-pattern.png'); */
+  font-family: 'Montserrat', sans-serif; /* Aligned with other pages' font */
+  background-color: #FFFFFF; /* Changed background color to white */
+  margin: 200px auto 40px auto; /* Added top margin as requested */
 }
 
 .auth-form-container {
-  background-color: var(--navbar-bg-color, #FFFFFF);
+  background-color: #FFFFFF; /* Aligned with Navbar background color */
   padding: 30px 40px; /* Increased padding */
-  border-radius: 12px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px; /* Consistent with other pages' card/image border-radius */
+  /* box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1); /* Removed box-shadow for consistency */
   width: 100%;
   max-width: 450px; /* Max width for the form box */
   text-align: center; /* Center title and subtitle */
 }
 
 .auth-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.2rem; /* ~35px */
-  color: var(--primary-color, #FF6B6B); /* Use primary color for title */
+  font-family: 'Montserrat', sans-serif; /* Aligned with other pages' heading font */
+  font-size: 2.188rem; /* Aligned with Section Title font size from HomePage.css */
+  color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
   margin-bottom: 10px;
   font-weight: 700;
 }
 
 .auth-subtitle {
-  font-size: 1rem; /* ~16px */
-  color: var(--text-color-lighter, #5a6a74);
+  font-size: 0.938rem; /* Aligned with small texts from HomePage.css */
+  color: #555; /* Medium Gray from HomePage guide */
   margin-bottom: 30px;
+  font-family: 'Montserrat', sans-serif; /* Aligned with other pages' font */
 }
 
 .auth-error-message {
@@ -49,8 +54,9 @@
   padding: 10px 15px;
   border-radius: 6px;
   margin-bottom: 20px;
-  font-size: 0.9rem;
+  font-size: 0.938rem; /* Aligned with small texts from HomePage.css */
   text-align: left; /* Align error text to left for readability */
+  font-family: 'Montserrat', sans-serif; /* Aligned with other pages' font */
 }
 
 .auth-form {
@@ -65,24 +71,25 @@
   display: block;
   font-weight: 600;
   margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: var(--text-color, #3D4A52);
+  font-size: 0.938rem; /* Aligned with small texts from HomePage.css */
+  color: #374151; /* Default Text Color from HomePage.css */
+  font-family: 'Montserrat', sans-serif; /* Aligned with other pages' font */
 }
 
-.form-control { /* Reusing styles from CheckoutPage.css, ensure consistency */
+.form-control {
   width: 100%;
   padding: 12px 15px;
-  font-size: 1rem;
-  border: 1px solid var(--border-color, #E0E0E0);
+  font-size: 0.938rem; /* Aligned with small texts from HomePage.css */
+  border: 1px solid #d1d5db; /* Light Gray border from HomePage guide */
   border-radius: 8px;
   box-sizing: border-box;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif; /* Aligned with other pages' font */
 }
 
 .form-control:focus {
-  border-color: var(--primary-color, #FF6B6B);
-  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 255, 107, 107), 0.25); /* Define --primary-color-rgb */
+  border-color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
+  box-shadow: 0 0 0 3px rgba(17, 63, 61, 0.25); /* Adjusted shadow to match primary color */
   outline: none;
 }
 
@@ -90,46 +97,66 @@
 .form-link.forgot-password-link {
   display: block;
   text-align: right;
-  font-size: 0.85rem;
-  color: var(--primary-color, #FF6B6B);
+  font-size: 0.938rem; /* Aligned with small texts from HomePage.css */
+  color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
   margin-top: 8px;
   text-decoration: none;
+  font-family: 'Montserrat', sans-serif; /* Aligned with other pages' font */
 }
 .form-link.forgot-password-link:hover {
   text-decoration: underline;
+  color: #0c2d2b; /* Darker Green/Teal for hover */
 }
 
 
-.auth-submit-button { /* Uses .btn and .btn-primary from global/HomePage.css */
-  width: 100%;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  font-size: 1.1rem;
-  margin-top: 10px; /* Reduced margin-top from button */
-  letter-spacing: 0.5px;
-  font-weight: 600;
+.auth-submit-button {
+  /* Inherits .btn base styles. Applying primary button specifics from HomePage.css */
+  display: inline-block; /* Keep as inline-block for margin auto to work */
+  font-weight: 600 !important; /* Set to 600 as per HomePage primary buttons */
+  padding: 0.7rem 2.5rem !important; /* Consistent padding from HomePage primary buttons */
+  border-radius: 25px !important; /* Consistent border-radius from HomePage primary buttons */
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif; /* Aligned with other pages' font */
+
+  background-color: #113f3d !important; /* Primary Dark Green/Teal from HomePage guide */
+  color: white !important; /* White text from HomePage guide */
+  
+  /* Remove width/max-width to allow margin: auto to center it */
+  /* width: 100%; */
+  /* max-width: 300px; */ 
+  margin: 20px auto 0 auto; /* Centered the button horizontally */
+  letter-spacing: 0.5px; /* Added for consistency */
+}
+.auth-submit-button:hover {
+  background-color: #0c2d2b !important; /* Darker Green/Teal for hover from HomePage guide */
 }
 .auth-submit-button:disabled {
-  background-color: #cccccc;
-  border-color: #cccccc;
-  cursor: not-allowed;
+  background-color: #cccccc; /* Kept original disabled state */
+  border-color: #cccccc; /* Kept original disabled state */
+  cursor: not-allowed; /* Kept original disabled state */
 }
 
 .auth-redirect-link {
   margin-top: 25px;
-  font-size: 0.95rem;
-  color: var(--text-color, #3D4A52);
+  font-size: 0.938rem; /* Aligned with small texts from HomePage.css */
+  color: #374151; /* Default Text Color from HomePage.css */
   text-align: center;
+  font-family: 'Montserrat', sans-serif; /* Aligned with other pages' font */
 }
 
 .auth-redirect-link a {
-  color: var(--primary-color, #FF6B6B);
+  color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
   font-weight: 600;
   text-decoration: none;
 }
 
 .auth-redirect-link a:hover {
   text-decoration: underline;
+  color: #0c2d2b; /* Darker Green/Teal for hover */
 }
 
 /* Responsive adjustments */
@@ -138,17 +165,17 @@
     padding: 25px 20px;
   }
   .auth-title {
-    font-size: 1.8rem;
+    font-size: 1.8rem; /* Adjusted for smaller screens */
   }
   .auth-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.938rem; /* Aligned with small texts */
     margin-bottom: 20px;
   }
   .form-control {
     padding: 10px 12px;
-    font-size: 0.95rem;
+    font-size: 0.938rem; /* Aligned with small texts */
   }
   .auth-submit-button {
-    font-size: 1rem;
+    font-size: 0.938rem; /* Aligned with general button font size */
   }
 }

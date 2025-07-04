@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ProductCard from '../components/product/ProductCard';
-
+import '../styles/CategoryProductsPage.css';
 const CategoryProductsPage = () => {
   const { slug } = useParams();
   const [products, setProducts] = useState([]);

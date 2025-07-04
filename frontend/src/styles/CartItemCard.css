@@ -1,129 +1,139 @@
 /* src/styles/CartItemCard.css */
 
+/* --- GOOGLE FONT IMPORT (Ensure all needed weights are here) --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 .cart-item {
-  display: flex;
-  align-items: flex-start; /* Align items to the top for better look if text wraps */
-  margin-bottom: 25px; /* Spacing between cart items */
-  padding: 20px;
-  background-color: var(--navbar-bg-color, #FFFFFF);
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
-  border: 1px solid var(--border-color, #F0F0F0);
-  gap: 20px; /* Replaces margin-left on the details div */
+    display: flex;
+    align-items: flex-start; /* Align items to the top for better look if text wraps */
+    margin-bottom: 25px; /* Spacing between cart items */
+    padding: 20px;
+    background-color: #FFFFFF; /* Aligned with Navbar background color */
+    border-radius: 12px; /* Consistent with HomePage card/image border-radius */
+    /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07); /* Removed box-shadow */
+    /* border: 1px solid var(--border-color, #F0F0F0); /* Removed border */
+    gap: 20px; /* Replaces margin-left on the details div */
+    font-family: 'Montserrat', sans-serif; /* Consistent font family */
+    color: #374151; /* Default text color */
 }
 
 .cart-item img { /* Targets the product image */
-  width: 100px; /* Increased size slightly */
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px; /* Rounded corners for the image */
-  flex-shrink: 0; /* Prevent image from shrinking */
-  background-color: #f8f8f8; /* Placeholder bg for image */
+    width: 100px; /* Increased size slightly */
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px; /* Rounded corners for the image */
+    flex-shrink: 0; /* Prevent image from shrinking */
+    background-color: #f8f8f8; /* Placeholder bg for image */
+    /* border: none; /* Ensure no border */
 }
 
 .cart-item-details-container { /* New class for the div that had marginLeft */
-  flex-grow: 1; /* Allow this container to take available space */
-  display: flex;
-  flex-direction: column; /* Stack name/price and controls/remove */
+    flex-grow: 1; /* Allow this container to take available space */
+    display: flex;
+    flex-direction: column; /* Stack name/price and controls/remove */
 }
 
 .cart-item-details-container h4 { /* Product name */
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.15rem; /* ~18px */
-  font-weight: 600;
-  color: var(--text-color, #3D4A52);
-  margin: 0 0 8px 0; /* Adjusted margin */
+    font-family: 'Montserrat', sans-serif; /* Consistent font family */
+    font-size: 1.125rem; /* Aligned with product name/price in ProductDetailPage.css */
+    font-weight: 600;
+    color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
+    margin: 0 0 8px 0; /* Adjusted margin */
 }
 
 .cart-item-details-container .item-price { /* Class for price paragraph */
-  font-size: 1rem; /* ~16px */
-  color: var(--text-color-lighter, #5a6a74);
-  margin: 0 0 12px 0; /* Spacing below price */
+    font-family: 'Montserrat', sans-serif; /* Consistent font family */
+    font-size: 0.938rem; /* Aligned with small texts from HomePage.css */
+    color: #555; /* Medium Gray from HomePage guide */
+    margin: 0 0 12px 0; /* Spacing below price */
 }
 
 .cart-item-quantity-controls { /* Class for the quantity controls div */
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between -, quantity, + */
-  margin-bottom: 15px; /* Space before remove button */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between -, quantity, + */
+    margin-bottom: 15px; /* Space before remove button */
 }
 
 .cart-item-quantity-controls button { /* For + and - buttons */
-  background-color: var(--border-color, #F0F0F0);
-  color: var(--text-color, #3D4A52);
-  border: none;
-  width: 32px; /* Slightly larger for easier click */
-  height: 32px;
-  border-radius: 50%; /* Circular buttons */
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  line-height: 1; /* Ensure symbol is centered */
+    background-color: #d1d5db; /* Light Gray from HomePage guide */
+    color: #113f3d; /* Primary Dark Green/Teal */
+    border: none;
+    width: 32px; /* Slightly larger for easier click */
+    height: 32px;
+    border-radius: 50%; /* Circular buttons */
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    line-height: 1; /* Ensure symbol is centered */
+    font-family: 'Montserrat', sans-serif; /* Consistent font family */
 }
 
 .cart-item-quantity-controls button:hover:not(:disabled) {
-  background-color: var(--secondary-color, #FFD166); /* Yellow hover */
+    background-color: rgba(17, 63, 61, 0.1); /* Lighter hover effect based on primary color */
+    color: #113f3d; /* Keep text color consistent on hover */
 }
 .cart-item-quantity-controls button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .cart-item-quantity-controls span { /* Quantity display */
-  font-size: 1.05rem;
-  font-weight: 600;
-  min-width: 25px;
-  text-align: center;
-  color: var(--text-color, #3D4A52);
+    font-family: 'Montserrat', sans-serif; /* Consistent font family */
+    font-size: 1.05rem;
+    font-weight: 600;
+    min-width: 25px;
+    text-align: center;
+    color: #374151; /* Default Text Color from HomePage.css */
 }
 
 .cart-item-remove-action { /* Class for the remove button */
-  background-color: transparent;
-  color: var(--primary-color, #FF6B6B); /* Coral color for remove */
-  border: 1px solid var(--primary-color, #FF6B6B); /* Subtle border */
-  padding: 6px 12px;
-  border-radius: 20px; /* Pill shape */
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 600;
-  font-family: 'Open Sans', sans-serif;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  align-self: flex-start; /* Align button to the left of its container if space allows */
+    background-color: transparent;
+    color: #ef4444; /* Red color for emphasis, consistent with Navbar logout */
+    border: 1px solid #ef4444; /* Subtle border matching the color */
+    padding: 6px 12px;
+    border-radius: 20px; /* Pill shape */
+    cursor: pointer;
+    font-size: 0.938rem; /* Aligned with small texts from HomePage.css */
+    font-weight: 600; /* Consistent with other buttons */
+    font-family: 'Montserrat', sans-serif; /* Consistent font family */
+    transition: background-color 0.2s ease, color 0.2s ease;
+    align-self: flex-start; /* Align button to the left of its container if space allows */
 }
 
 .cart-item-remove-action:hover {
-  background-color: var(--primary-color, #FF6B6B);
-  color: var(--button-text-color, #FFFFFF);
+    background-color: #ef4444; /* Solid red on hover */
+    color: white; /* White text on hover */
 }
 
 /* Responsive adjustments for cart item card */
 @media (max-width: 480px) {
-  .cart-item {
-    flex-direction: column; /* Stack image and details on very small screens */
-    align-items: center; /* Center items when stacked */
-    text-align: center;
-    gap: 15px;
-  }
+    .cart-item {
+        flex-direction: column; /* Stack image and details on very small screens */
+        align-items: center; /* Center items when stacked */
+        text-align: center;
+        gap: 15px;
+    }
 
-  .cart-item img {
-    width: 120px; /* Allow image to be a bit larger when stacked */
-    height: 120px;
-  }
+    .cart-item img {
+        width: 120px; /* Allow image to be a bit larger when stacked */
+        height: 120px;
+    }
 
-  .cart-item-details-container {
-    align-items: center; /* Center content of details when stacked */
-  }
-  
-  .cart-item-details-container h4 {
-    font-size: 1.1rem;
-  }
+    .cart-item-details-container {
+        align-items: center; /* Center content of details when stacked */
+    }
+    
+    .cart-item-details-container h4 {
+        font-size: 1.1rem; /* Adjusted for smaller screens */
+    }
 
-  .cart-item-remove-action {
-    align-self: center; /* Center remove button when stacked */
-    margin-top: 10px;
-  }
+    .cart-item-remove-action {
+        align-self: center; /* Center remove button when stacked */
+        margin-top: 10px;
+    }
 }

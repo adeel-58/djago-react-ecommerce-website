@@ -1,0 +1,87 @@
+/* Import global font if not already handled globally in your main app.css */
+/* If Montserrat is already imported globally, you can remove this line. */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+/* Base styling for the category products page container */
+.category-products-page {
+    /* Consistent font family with HomePage.css body */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    /* Consistent background color with HomePage.css body/app-container */
+    background-color: #f9fafb;
+    /* Consistent default text color with HomePage.css body */
+    color: #374151;
+    padding-bottom: 3rem; /* Add some bottom padding for content */
+}
+
+/* Main content container for consistent layout and margin */
+.category-products-page .container {
+    width: 100%;
+    margin: 200px auto 40px auto; /* Applied the requested margin */
+    box-sizing: border-box;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+/* Responsive padding for larger screens, consistent with HomePage.css */
+@media (min-width: 1024px) {
+    .category-products-page .container {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+}
+@media (min-width: 640px) {
+    .category-products-page .container {
+        max-width: 640px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+@media (min-width: 768px) {
+    .category-products-page .container {
+        max-width: 768px;
+    }
+}
+@media (min-width: 1280px) {
+    .category-products-page .container {
+        max-width: 1280px;
+    }
+}
+
+/* Styling for the main heading (e.g., "Products in 'Category Name'") */
+.category-products-page h2 {
+    /* Consistent font family with .section-title and .hero-title from HomePage.css */
+    font-family: 'Montserrat', sans-serif;
+    /* Font size similar to .section-title */
+    font-size: 2.188rem;
+    /* Font weight consistent with headings */
+    font-weight: 700;
+    /* Color consistent with section titles */
+    color: #113f3d;
+    text-align: center; /* Center the heading */
+    margin-bottom: 2.5rem; /* Spacing below the heading before products */
+    margin-top: 0; /* Reset default h2 margin-top to allow container margin to control spacing */
+}
+
+/* Styling for the product grid, consistent with HomePage.css and SearchResultsPage.css */
+.category-products-page .product-grid {
+    display: grid;
+    /* Default to 2 columns on smaller screens */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem; /* Consistent gap between product cards */
+    justify-items: center; /* Center each product card within its grid cell */
+}
+
+/* Adjust grid columns for medium screens (e.g., tablets) */
+@media (min-width: 768px) {
+    .category-products-page .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Adjust grid columns for large screens (e.g., desktops) */
+@media (min-width: 1024px) {
+    .category-products-page .product-grid {
+        /* Consistent with .product-grid on larger screens in HomePage.css */
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}

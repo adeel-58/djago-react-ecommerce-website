@@ -1,23 +1,34 @@
 /* src/styles/ProductDetailPage.css */
 
-/* Assuming :root variables and global .btn styles are defined elsewhere */
+/*
+  This CSS file has been updated to align with the styling conventions
+  defined in HomePage.css and the Homepage CSS Style Guide.
+  Colors, font families, font sizes, and button styles have been harmonized.
+*/
+
+/* --- GOOGLE FONT IMPORT (Ensure all needed weights are here) --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+
+/* Global variables (if defined in a :root block, they would go here)
+   For now, we're directly applying the hex values from the style guide. */
 
 .product-detail-page-container {
   max-width: 1100px;
-  margin: 40px auto;
+  margin: 200px auto 40px auto; /* Adjusted top margin to push content down from navbar */
   padding: 20px;
-  font-family: 'Open Sans', sans-serif;
-  color: var(--text-color, #3D4A52);
+  font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
+  color: #374151; /* Default Text Color from HomePage.css */
 }
 
 .product-detail-card {
   display: grid;
   grid-template-columns: 1fr 1.2fr; /* Image column, Info column */
-  gap: 40px; /* Increased gap */
-  background-color: var(--navbar-bg-color, #FFFFFF);
+  gap: 60px; /* Increased gap for more horizontal space */
+  background-color: #FFFFFF; /* Aligned with Navbar background color */
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08); /* Removed card border shadow */
+  border-radius: 12px; /* Consistent with HomePage card/image border-radius */
 }
 
 /* Image Column */
@@ -28,15 +39,15 @@
 }
 
 .product-main-image {
-  width: 100%;
-  max-width: 450px; /* Max width for the main image */
+  width: 80%; /* Made image slightly smaller */
+  max-width: 300px; /* Adjusted max-width for a smaller image */
   height: auto;
   aspect-ratio: 1 / 1; /* Make image container square-ish */
   object-fit: cover; /* Or 'contain' if you don't want cropping */
-  border-radius: 10px;
-  border: 1px solid var(--border-color, #E0E0E0);
+  border-radius: 10px; /* Consistent with HomePage image border-radius */
+  /* border: 1px solid #d1d5db; /* Removed border to the photo */
   margin-bottom: 15px; /* Space for thumbnails if added */
-  background-color: #f8f8f8;
+  background-color: #f8f8f8; /* Kept as a specific light gray for image background */
 }
 
 /* TODO: Styles for thumbnail images if you add them */
@@ -50,14 +61,14 @@
   height: 80px;
   object-fit: cover;
   border-radius: 6px;
-  border: 1px solid var(--border-color, #E0E0E0);
+  border: 1px solid #d1d5db;
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 0.2s ease, border-color 0.2s ease;
 }
 .thumbnail-image:hover, .thumbnail-image.active {
   opacity: 1;
-  border-color: var(--primary-color, #FF6B6B);
+  border-color: #113f3d;
 }
 */
 
@@ -68,29 +79,31 @@
 }
 
 .product-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.4rem; /* ~38px */
+  font-family: 'Montserrat', sans-serif; /* Aligned with Heading font */
+  font-size: 1.8rem; /* Reduced font size for product title */
   font-weight: 700;
-  color: var(--text-color, #3D4A52);
+  color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
   margin: 0 0 10px 0;
   line-height: 1.2;
 }
 
 .product-category {
-  font-size: 0.95rem;
-  color: var(--text-color-lighter, #5a6a74);
+  font-size: 0.938rem; /* Aligned with Paragraph/Small Text font size */
+  color: #555; /* Medium Gray from HomePage guide */
   margin-bottom: 15px;
+  font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
 }
 .product-category span {
   font-weight: 600;
-  color: var(--primary-color, #FF6B6B);
+  color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
 }
 
 .product-price {
-  font-size: 2rem; /* ~32px */
+  font-size: 1.8rem; /* Reduced font size for product price */
   font-weight: 700;
-  color: var(--primary-color, #FF6B6B);
+  color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
   margin-bottom: 25px;
+  font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
 }
 
 /* Message Styling */
@@ -98,12 +111,13 @@
   padding: 10px 15px;
   margin-bottom: 20px;
   border-radius: 6px;
-  font-size: 0.95rem;
+  font-size: 0.95rem; /* Kept original as it's a specific message size */
   text-align: center;
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
   max-width: 100%; /* Ensure it doesn't overflow */
+  font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
 }
 .product-message.visible {
   opacity: 1;
@@ -111,32 +125,47 @@
 }
 
 .message-success {
-  background-color: #DFF2BF; /* Light green */
-  color: #4F8A10; /* Dark green */
-  border: 1px solid #A3C87A;
+  background-color: #DFF2BF; /* Kept original */
+  color: #4F8A10; /* Kept original */
+  border: 1px solid #A3C87A; /* Kept original */
 }
 
 .message-error {
-  background-color: #FFD2D2; /* Light red */
-  color: #D8000C; /* Dark red */
-  border: 1px solid #D8000C;
+  background-color: #FFD2D2; /* Kept original */
+  color: #D8000C; /* Kept original */
+  border: 1px solid #D8000C; /* Kept original */
 }
 
 
 /* Add to Cart Button */
-.add-to-cart-button { /* Uses .btn and .btn-primary from global styles */
+.product-detail-info-column .add-to-cart-button { /* Increased specificity */
+  display: inline-block;
+  font-weight: 600 !important; /* Decreased font-weight to 500, now with !important */
+  padding: 0.7rem 1.0rem !important; /* Adjusted padding to make it thinner */
+  border-radius: 25px !important; /* Reverted border-radius to 25px */
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
+  font-size: 16px !important;
+  /* Colors from HomePage.css primary button */
+  background-color: #113f3d !important; /* Primary Dark Green/Teal from HomePage guide */
+  color: white !important; /* White text from HomePage guide */
+
   width: 100%; /* Full width button */
   max-width: 300px; /* Max width for the button */
-  padding-top: 14px;
-  padding-bottom: 14px;
-  font-size: 1.1rem;
   letter-spacing: 0.5px;
   margin-bottom: 25px; /* Space after button */
 }
+.product-detail-info-column .add-to-cart-button:hover { /* Increased specificity */
+  background-color: #0c2d2b !important; /* Darker Green/Teal for hover from HomePage guide */
+}
 .add-to-cart-button:disabled {
-  background-color: #cccccc;
-  border-color: #cccccc;
-  cursor: not-allowed;
+  background-color: #cccccc; /* Kept original disabled state */
+  border-color: #cccccc; /* Kept original disabled state */
+  cursor: not-allowed; /* Kept original disabled state */
 }
 
 /* Quantity Selector (Optional) */
@@ -148,15 +177,17 @@
 }
 .quantity-selector label {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.938rem; /* Aligned with Paragraph/Small Text font size */
+  font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
 }
 .quantity-selector input[type="number"] {
   width: 60px;
   padding: 8px;
   text-align: center;
-  border: 1px solid var(--border-color, #E0E0E0);
+  border: 1px solid #d1d5db; /* Light Gray border from HomePage guide */
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 1rem; /* Kept original as it's a specific input size */
+  font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
 }
 
 
@@ -164,22 +195,24 @@
 .product-description-section {
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid var(--border-color, #E0E0E0);
+  border-top: 1px solid #d1d5db; /* Light Gray border from HomePage guide */
 }
 
 .description-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem; /* ~21px */
+  font-family: 'Montserrat', sans-serif; /* Aligned with Heading font */
+  font-size: 1.25rem; /* Aligned with Section Title font size (smaller headings) */
   font-weight: 600;
-  color: var(--text-color, #3D4A52);
+  color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
   margin-bottom: 10px;
 }
 
 .description-text {
-  font-size: 1rem;
+  font-size: 1.125rem; /* Set font size to 18px (1.125rem) */
+  font-weight: normal !important; /* Set font weight to normal (not bold), now with !important */
   line-height: 1.7;
-  color: var(--text-color-lighter, #5a6a74);
+  color: #555; /* Medium Gray from HomePage guide */
   white-space: pre-wrap; /* Preserve line breaks from description */
+  font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
 }
 
 /* Loading and Error States for the page */
@@ -189,12 +222,14 @@
     justify-content: center;
     align-items: center;
     min-height: 300px; /* Ensure it takes some space */
-    font-size: 1.2rem;
-    color: var(--text-color-lighter, #5a6a74);
+    font-size: 1.125rem; /* Aligned with Hero Subtitle font size */
+    color: #555; /* Medium Gray from HomePage guide */
+    font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
 }
 .product-detail-container.error-container p {
-    color: var(--primary-color, #FF6B6B); /* Use primary color for error text */
+    color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
     font-weight: 600;
+    font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
 }
 
 
@@ -209,10 +244,10 @@
     max-width: 100%; /* Allow image to be full width of its container */
   }
   .product-title {
-    font-size: 2rem;
+    font-size: 1.7rem; /* Adjusted for smaller screens */
   }
   .product-price {
-    font-size: 1.7rem;
+    font-size: 1.5rem; /* Adjusted for smaller screens */
   }
   .add-to-cart-button {
     max-width: 100%; /* Button full width on smaller screens */
@@ -228,20 +263,20 @@
     padding: 15px;
   }
   .product-title {
-    font-size: 1.7rem;
+    font-size: 1.7rem; /* Adjusted for smaller screens */
   }
   .product-price {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Adjusted for smaller screens */
   }
   .add-to-cart-button {
-    font-size: 1rem;
+    font-size: 0.938rem; /* Aligned with general button font size */
     padding-top: 12px;
     padding-bottom: 12px;
   }
   .description-title {
-    font-size: 1.1rem;
+    font-size: 1.125rem; /* Adjusted for smaller screens */
   }
   .description-text {
-    font-size: 0.95rem;
+    font-size: 0.95rem; /* Kept original */
   }
 }

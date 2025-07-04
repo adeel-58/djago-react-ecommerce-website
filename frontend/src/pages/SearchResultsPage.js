@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import ProductCard from '../components/product/ProductCard';
 import { Row, Col } from 'react-bootstrap';
-
+import './SearchResultsPage.css';
 const useQuery = () => new URLSearchParams(useLocation().search);
 
 const SearchResultsPage = () => {

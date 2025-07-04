@@ -1,17 +1,27 @@
 /* src/styles/CartPage.css */
 
+/*
+  This CSS file has been updated to align with the styling conventions
+  defined in HomePage.css and ProductDetailPage.css.
+  Colors, font families, font sizes, and button styles have been harmonized.
+*/
+
+/* --- GOOGLE FONT IMPORT (Ensure all needed weights are here) --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+
 .cart-page-container {
   max-width: 1100px;
-  margin: 40px auto;
+  margin: 200px auto 40px auto; /* Adjusted top margin to push content down from navbar */
   padding: 20px;
-  font-family: 'Open Sans', sans-serif;
-  color: var(--text-color, #3D4A52);
+  font-family: 'Montserrat', sans-serif; /* Aligned with HomePage/ProductDetailPage font */
+  color: #374151; /* Default Text Color from HomePage.css */
 }
 
 .page-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem; /* ~40px */
-  color: var(--text-color, #3D4A52);
+  font-family: 'Montserrat', sans-serif; /* Aligned with HomePage/ProductDetailPage heading font */
+  font-size: 2.188rem; /* Aligned with Section Title font size from HomePage.css */
+  color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
   text-align: center;
   margin-bottom: 30px;
   font-weight: 700;
@@ -20,24 +30,50 @@
 .loading-spinner-container {
   text-align: center;
   padding: 50px 0;
-  font-size: 1.2rem;
+  font-size: 1.125rem; /* Aligned with Hero Subtitle font size from HomePage.css */
+  font-family: 'Montserrat', sans-serif; /* Aligned with HomePage/ProductDetailPage font */
+  color: #555; /* Medium Gray from HomePage guide */
 }
 
 .empty-cart-message {
   text-align: center;
   padding: 50px 20px;
-  background-color: var(--navbar-bg-color, #FFFFFF);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  background-color: #FFFFFF; /* Aligned with Navbar background color */
+  border-radius: 12px; /* Consistent with HomePage card/image border-radius */
+  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); /* Removed box-shadow */
 }
 
 .empty-cart-message p {
-  font-size: 1.2rem;
+  font-size: 1.125rem; /* Aligned with Hero Subtitle font size from HomePage.css */
   margin-bottom: 25px;
+  font-family: 'Montserrat', sans-serif; /* Aligned with HomePage/ProductDetailPage font */
+  color: #555; /* Medium Gray from HomePage guide */
 }
 
-/* .btn and .btn-primary are assumed to be globally styled (e.g., from HomePage.css) */
-/* If not, you'll need to define them here or import a global button stylesheet */
+/* Style for the "Start Shopping" button when cart is empty */
+.empty-cart-message .btn {
+  display: inline-block;
+  font-weight: 600 !important;
+  padding: 0.7rem 2.5rem !important;
+  border-radius: 25px !important;
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+
+  background-color: #113f3d !important; /* Primary Dark Green/Teal from HomePage guide */
+  color: white !important; /* White text from HomePage guide */
+
+  margin-top: 20px; /* Add some space above the button */
+  letter-spacing: 0.5px;
+}
+
+.empty-cart-message .btn:hover {
+  background-color: #0c2d2b !important; /* Darker Green/Teal for hover from HomePage guide */
+}
+
 
 .cart-content {
   display: grid;
@@ -54,22 +90,24 @@
 
 /* Cart Summary Section */
 .cart-summary-section {
-  background-color: var(--navbar-bg-color, #FFFFFF);
+  background-color: #FFFFFF; /* Aligned with Navbar background color */
   padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  border-radius: 12px; /* Consistent with HomePage card/image border-radius */
+  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); /* Removed box-shadow */
   height: fit-content; /* So it doesn't stretch unnecessarily */
   position: sticky; /* Make summary sticky on scroll */
-  top: calc(var(--navbar-height, 70px) + 20px); /* Adjust based on your navbar height */
+  /* Adjust top based on your navbar height, e.g., calc(180px + 20px) if 180px is your container margin */
+  top: 20px; /* Adjusted to be relative to the viewport after container margin */
 }
 
 .summary-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem; /* ~24px */
-  color: var(--text-color, #3D4A52);
+  font-family: 'Montserrat', sans-serif; /* Aligned with HomePage/ProductDetailPage heading font */
+  font-size: 1.25rem; /* Aligned with smaller section titles from HomePage.css */
+  color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
   margin-bottom: 20px;
-  border-bottom: 1px solid var(--border-color, #F0F0F0);
+  border-bottom: 1px solid #d1d5db; /* Light Gray border from HomePage guide */
   padding-bottom: 10px;
+  font-weight: 600; /* Consistent with other titles */
 }
 
 .summary-details {
@@ -79,37 +117,59 @@
 .summary-row {
   display: flex;
   justify-content: space-between;
-  font-size: 1rem; /* ~16px */
+  font-size: 0.938rem; /* Aligned with Paragraph/Small Text font size from HomePage.css */
   margin-bottom: 12px;
+  font-family: 'Montserrat', sans-serif; /* Aligned with HomePage/ProductDetailPage font */
 }
 
 .summary-row span:first-child {
-  color: var(--text-color-lighter, #5a6a74);
+  color: #555; /* Medium Gray from HomePage guide */
 }
 
 .summary-row span:last-child {
   font-weight: 600;
+  color: #374151; /* Default Text Color from HomePage.css */
 }
 
 .total-row {
-  font-size: 1.2rem; /* ~19px */
+  font-size: 1.125rem; /* Aligned with Hero Subtitle font size from HomePage.css */
   font-weight: 700;
-  color: var(--primary-color, #FF6B6B); /* Total in primary color */
-  border-top: 1px solid var(--border-color, #F0F0F0);
+  color: #113f3d; /* Primary Dark Green/Teal from HomePage guide */
+  border-top: 1px solid #d1d5db; /* Light Gray border from HomePage guide */
   padding-top: 15px;
   margin-top: 15px;
+  font-family: 'Montserrat', sans-serif; /* Aligned with HomePage/ProductDetailPage font */
 }
 .total-row span:first-child {
-  color: var(--primary-color, #FF6B6B); /* Ensure "Total" text is also primary color */
+  color: #113f3d; /* Ensure "Total" text is also primary color */
 }
 
 
-.btn-checkout { /* Uses .btn and .btn-primary styles */
-  padding-top: 12px;
-  padding-bottom: 12px;
-  font-size: 1.1rem;
+.btn-checkout {
+  /* Inherits .btn base styles. Applying primary button specifics from HomePage.css */
+  display: inline-block;
+  font-weight: 600 !important; /* Set to 600 as per HomePage primary buttons */
+  padding: 0.7rem 2.5rem !important; /* Consistent padding from HomePage primary buttons */
+  border-radius: 25px !important; /* Consistent border-radius from HomePage primary buttons */
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif; /* Aligned with HomePage/ProductDetailPage font */
+
+  background-color: #113f3d !important; /* Primary Dark Green/Teal from HomePage guide */
+  color: white !important; /* White text from HomePage guide */
+  
   width: 100%; /* Make button full width */
+  max-width: 300px; /* Added max-width for consistency */
+  letter-spacing: 0.5px; /* Added for consistency */
 }
+
+.btn-checkout:hover {
+  background-color: #0c2d2b !important; /* Darker Green/Teal for hover from HomePage guide */
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 992px) {
@@ -137,15 +197,17 @@
     font-size: 1.8rem;
   }
   .summary-title {
-    font-size: 1.3rem;
+    font-size: 1.125rem; /* Adjusted for smaller screens */
   }
   .summary-row, .total-row {
-    font-size: 0.95rem;
+    font-size: 0.938rem; /* Adjusted for smaller screens */
   }
   .total-row {
-    font-size: 1.1rem;
+    font-size: 1.125rem; /* Adjusted for smaller screens */
   }
   .btn-checkout {
-    font-size: 1rem;
+    font-size: 0.938rem; /* Aligned with general button font size */
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 }

@@ -1,296 +1,496 @@
-/* Navbar.css - With Media Queries and Keyframes */
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); /* Added Pacifico font for logo */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap'); /* Assuming these are your primary fonts */
+/* src/styles/Navbar.css */
 
-
-/* Base Reset & Navbar Styling */
-.navbar {
-  background-color: #fff;
-  border-bottom: 1px solid #eaeaea;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  font-family: 'Open Sans', sans-serif; /* Using Open Sans as a base for navbar links */
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  padding: 0.75rem 1.5rem 0.75rem 40px; /* MODIFIED: top | right | bottom | left (ensuring left is 40px) */
-  width: 100%; /* Ensure navbar spans full width */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+/* General Setup */
+html, body {
+    /* Ensure html and body establish a high stacking context */
+    position: relative;
+    z-index: 1; /* A base z-index for the document flow */
 }
 
-.navbar__container {
-  max-width: 1300px; /* Max width of the content within the navbar */
-  margin: 0 auto; /* This centers the container if viewport is wider than max-width */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap; /* Re-added for responsiveness */
-  width: 100%; /* Ensure container tries to fill navbar padding box */
+.app-navbar {
+    font-family: sans-serif;
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    /* Set a very high z-index for the main navbar container */
+    z-index: 99999; /* This should make the entire navbar stack above most content */
+    transition: background-color 0.3s ease;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-/* Sections for layout (from your JS structure) */
-.navbar-section {
-  display: flex;
-  align-items: center;
+/* --- Top Bar --- */
+.top-bar {
+    background-color: #F8B4B4;
+    color: #333;
+    font-size: 0.75rem;
+    padding: 0.5rem 0;
 }
 
-.navbar-section--left {
-  flex-shrink: 0;
+.top-bar__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.navbar-section--center {
-  flex-grow: 1;
-  justify-content: center;
-  gap: 15px; /* Spacing for direct categories */
-}
-.navbar__direct-categories {
+.top-bar__socials {
     display: flex;
     align-items: center;
-    gap: 20px; /* Space between category links */
+    gap: 1rem;
 }
 
-
-.navbar-section--right {
-  justify-content: flex-end;
-  gap: 1rem; /* Space between cart and auth block */
-  flex-shrink: 0;
+.top-bar__socials img {
+    width: 16px;
+    height: 16px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    image-rendering: auto; /* Added for better image rendering */
 }
 
-
-/* Brand */
-.navbar__brand {
-  font-family: 'Pacifico', cursive; /* Stylish font for PetHub */
-  font-size: 2.2rem; /* Adjusted size for the new font */
-  font-weight: 400; /* Pacifico is usually best at normal weight */
-  color: #e91e63; /* Using the pink color from your provided CSS for the brand */
-  text-decoration: none;
-  transition: color 0.3s ease;
-  padding-right: 10px; /* Some space if other items are close on mobile */
+.top-bar__socials a:hover img {
+    opacity: 1;
 }
 
-.navbar__brand:hover {
-  color: #c2185b; /* A darker shade of pink for hover */
-}
-
-/* Search - Kept from your CSS, though not in current JS */
-.navbar__search {
-  flex: 1;
-  margin: 0 1rem;
-  min-width: 250px;
-}
-
-/* Categories Dropdown & General Dropdown Styling */
-.navbar__categories { /* This class seems unused in your current Navbar.js */
-  position: relative;
-  margin-right: 1rem;
-}
-
-.dropdown { /* For My Account */
-  position: relative;
-  cursor: pointer;
-}
-
-.dropdown__toggle {
-  font-size: 0.95rem; /* Adjusted for consistency */
-  font-weight: 600; /* Using Poppins weight */
-  font-family: 'Poppins', sans-serif;
-  color: #333;
-  padding: 0.5rem 1rem;
-  display: inline-block;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.dropdown__toggle:hover {
-  background-color: #f7f7f7;
-  color: #e91e63;
-}
-.dropdown__toggle::after { /* Adding an arrow to dropdown toggle */
-  content: ' ▼';
-  font-size: 0.7em;
-  margin-left: 4px;
-}
-
-
-.dropdown__menu {
-  position: absolute;
-  top: 110%; /* Position below toggle */
-  right: 0; /* Align to the right for account dropdown */
-  left: auto; /* Override default left: 0 */
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-  padding: 0.5rem 0;
-  display: none; /* Hidden by default, shown on hover */
-  min-width: 200px;
-  z-index: 999;
-  animation: fadeIn 0.3s ease-in-out; /* Animation re-added */
-}
-
-.dropdown:hover .dropdown__menu {
-  display: block;
-}
-
-.dropdown__menu a,
-.dropdown__item.logout {
-  display: block;
-  padding: 0.6rem 1.2rem; /* Slightly more padding */
-  color: #444;
-  text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-size: 0.9rem;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.dropdown__menu a:hover,
-.dropdown__item.logout:hover {
-  background-color: #f0f0f0;
-  color: #e91e63;
-}
-.dropdown__menu hr {
-    border: 0;
-    border-top: 1px solid #eee;
-    margin: 0.4rem 0;
-}
-
-.dropdown__item.logout {
-  cursor: pointer;
-}
-
-/* Cart & General Links */
-.navbar__link {
-  font-size: 0.95rem; /* Adjusted for consistency */
-  font-weight: 600; /* Using Poppins weight */
-  font-family: 'Poppins', sans-serif;
-  color: #444;
-  text-decoration: none;
-  transition: color 0.3s;
-  padding: 0.5rem 0.3rem; /* Padding for better click area */
-  display: flex;
-  align-items: center;
-}
-.navbar__link.cart-link .cart-text {
-    margin-left: 5px;
-}
-
-
-.navbar__link:hover {
-  color: #e91e63;
-}
-
-/* Category specific links */
-.navbar__category-link {
-    font-weight: 500; /* Slightly less prominent than main nav links */
-    font-family: 'Open Sans', sans-serif;
-}
-
-
-/* Auth Links */
-.navbar__auth {
-  display: flex;
-  align-items: center; /* Vertically align login/register */
-  gap: 0.5rem; /* Reduced gap for a tighter look */
-}
-.navbar__register-btn { /* To make register look like a button */
-    background-color: #e91e63;
-    color: white !important; /* Important to override .navbar__link color */
-    padding: 0.5rem 1rem !important; /* Ensure padding is applied */
-    border-radius: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-.navbar__register-btn:hover {
-    background-color: #c2185b;
-    color: white !important;
-}
-
-/* Responsive section re-added */
-@media (max-width: 992px) { /* Adjusted breakpoint for better handling of categories */
-    .navbar__container {
-        /* Keep as flex-row but allow wrapping for sections */
-    }
-    .navbar-section--center {
-        order: 3; /* Move categories to a new line if needed */
-        width: 100%;
-        margin-top: 0.5rem;
-        justify-content: center; /* Center categories when they wrap */
-    }
-     .navbar__direct-categories {
-        justify-content: center;
-        width: 100%;
-        flex-wrap: wrap; /* Allow categories themselves to wrap */
+/* Hide top bar on smaller screens */
+@media (max-width: 767px) {
+    .top-bar {
+        display: none;
     }
 }
 
 
-@media (max-width: 768px) {
-  .navbar__container {
-    flex-direction: column;
-    align-items: center; /* Center brand when stacked */
-  }
-  .navbar-section {
-      width: 100%;
-      justify-content: center; /* Center content of each section */
-      margin-bottom: 0.5rem;
-  }
-  .navbar-section--left, .navbar-section--right {
-      margin-bottom: 0.75rem;
-  }
-  .navbar-section--right {
-      gap: 1rem; /* Restore some gap for cart/auth when stacked */
-  }
+/* --- Main Navbar --- */
+.main-navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    /* This is required to position the background pseudo-element correctly */
+    position: relative;
+    /* Changed overflow to visible so dropdowns are not clipped */
+    overflow: visible;
+    /* Explicitly setting a high z-index for the main navbar content */
+    z-index: 10000;
+}
 
-  .navbar__search { /* Kept from your CSS */
+/* This new pseudo-element will hold your background image */
+.main-navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    margin: 1rem 0;
-  }
+    height: 100%;
 
-  .navbar__auth {
-    width: auto; /* Let it size to content */
+    /* --- Your Image Path --- */
+    /* Note: This path goes up from 'styles' to 'src', then down into 'assets' */
+    background-image: url('../assets/images/heropic.jpg');
+
+    background-position: center top; /* Shows the upper-center of the image */
+    background-repeat: no-repeat;
+    background-size: cover; /* Adjust if needed (e.g., 'contain') */
+
+    /* --- Set the low opacity here --- */
+    opacity: 0.5; /* Example: 20% opacity. Adjust between 0.1 to 0.5 */
+
+    /* Places the background behind the content */
+    z-index: 0;
+}
+
+.main-navbar__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px; /* 6rem */
+
+    /* This ensures the navbar content (logo, search, icons) sits on top of the background image */
+    position: relative;
+    z-index: 1;
+}
+
+/* Styling for the main logo in the navbar */
+.navbar-logo {
+    max-height: 60px; /* Increased max-height to give more room, adjust as needed */
+    max-width: 150px; /* Added max-width to prevent it from being too wide */
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensures it behaves as a block element for sizing */
+    object-fit: contain; /* Ensures the entire image is visible within its bounds */
+    image-rendering: auto; /* Added for better image rendering */
+}
+
+/* Mobile specific adjustments for main navbar container */
+@media (max-width: 767px) {
+    .main-navbar__container {
+        height: 70px; /* Shorter height for mobile */
+        padding: 0 1rem; /* Padding for small screens */
+        justify-content: space-between; /* Keep logo left, actions right */
+    }
+    .navbar-logo {
+        max-height: 45px; /* Smaller logo on mobile */
+    }
+}
+
+
+.main-navbar__brand .brand-link {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #004242;
+    text-decoration: none;
+}
+
+.main-navbar__search {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 2rem;
+}
+
+.search-bar {
+    position: relative;
+}
+
+.search-bar__input {
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    /* Added Montserrat font */
+    font-family: 'Montserrat', sans-serif;
+}
+.search-bar__input:focus {
+    outline: none;
+    border-color: #F8B4B4;
+    box-shadow: 0 0 0 2px rgba(248, 180, 180, 0.5);
+}
+
+/* Updated for search button functionality */
+.search-bar__icon-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    /* Moved the icon further to the right */
+    right: 1.5rem; /* Increased from 1rem */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex; /* To center the image within the button */
+    align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    /* margin-top: 1rem; */ /* Handled by section margin */
-  }
+    z-index: 2; /* Ensure it's above the input if needed */
+}
 
-  .navbar__categories, /* Kept from your CSS */
-  .dropdown { 
-    width: auto; /* Let it size to content */
-  }
-  .account-dropdown { /* Ensure My Account dropdown is also centered */
+.search-bar__icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+    image-rendering: auto; /* Added for better image rendering */
+}
+
+/* Hide search bar on mobile, or display it differently */
+@media (max-width: 767px) {
+    .main-navbar__search {
+        display: none; /* Hide search bar on mobile */
+    }
+}
+
+
+.main-navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Styling for action-link buttons (User/Login toggle) */
+.action-link.dropdown__toggle {
+    background: none; /* Remove default button background */
+    border: none; /* Remove default button border */
+    padding: 0; /* Remove default button padding */
+    cursor: pointer;
+    display: flex; /* To align image and text if any */
+    align-items: center;
+    color: #374151; /* Match link color */
+    font-family: sans-serif; /* Ensure font consistency */
+}
+
+.action-link.dropdown__toggle:hover {
+    color: #004242; /* Match link hover color */
+}
+
+.action-link img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    image-rendering: auto; /* Added for better image rendering */
+}
+
+.action-link:hover {
+    color: #004242;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn--primary {
+    background-color: #004242;
+    color: white;
+}
+
+.btn--primary:hover {
+    background-color: #002a2a;
+}
+
+
+/* --- Bottom Navbar --- */
+.bottom-navbar {
+    background-color: #F8B4B4;
+    position: relative; /* Ensure it creates a stacking context */
+    z-index: 10; /* Set a lower z-index than the main-navbar */
+}
+
+.bottom-navbar__container {
     display: flex;
     justify-content: center;
-  }
-
-  .dropdown__menu {
-    width: 100%; /* Make dropdown menu full width if its parent is full width */
-    left: 50%; /* Start from center */
-    transform: translateX(-50%); /* Pull back by half its width to center */
-    min-width: 250px; /* Ensure tappable area */
-  }
-  .account-dropdown .dropdown__menu { /* Specific for account dropdown on mobile */
-      position: static; /* Make it flow in document */
-      box-shadow: none;
-      border: none;
-      border-top: 1px solid #eee;
-      margin-top: 0.5rem;
-  }
-
-  .navbar__direct-categories {
-      gap: 10px; /* Reduce gap between categories on mobile */
-  }
-  .navbar__category-link {
-      padding: 0.3rem 0.5rem; /* Smaller padding for category links */
-      font-size: 0.9rem;
-  }
+    align-items: center;
+    height: 56px; /* 3.5rem */
 }
 
-/* @keyframes fadeIn re-added */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.bottom-navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Reduced gap to accommodate padding */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bottom-navbar__links a {
+    display: flex;
+    align-items: center;
+    color: #004242;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.3s;
+    padding: 0.5rem 1rem; /* Added padding */
+    border-radius: 4px; /* Optional: for better hover effect */
+}
+
+.bottom-navbar__links a:hover {
+    color: white;
+    /* background-color: rgba(0, 66, 66, 0.1); -- Removed as requested */
+}
+
+/* Styling for dropdown toggle buttons in bottom navbar */
+.bottom-navbar .dropdown__toggle {
+    background: none; /* Remove default button background */
+    border: none; /* Remove default button border */
+    padding: 0.5rem 1rem; /* Match the padding of sibling <a> tags */
+    cursor: pointer;
+    display: flex; /* For aligning text and pseudo-element arrow */
+    align-items: center;
+    color: #004242; /* Match link color */
+    font-weight: 600; /* Match link font-weight */
+    text-decoration: none; /* Remove underline */
+    font-size: 0.875rem; /* Match link font-size */
+    transition: color 0.3s;
+    border-radius: 4px; /* Match link border-radius */
+    font-family: sans-serif; /* Ensure font consistency */
+}
+
+.bottom-navbar .dropdown__toggle:hover {
+    color: white;
+}
+
+
+/* --- Dropdown Fix --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 20000; /* This z-index is for the dropdown container */
+}
+
+.dropdown__menu {
+    display: none;
+    position: absolute;
+    /* Adjusted left property to shift the dropdown further left */
+    left: 0; /* Changed back to 0, adjust if needed for specific alignment */
+    top: 100%;
+    margin-top: 0.5rem;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 99999; /* This z-index is for the dropdown content itself */
+    border-radius: 0.375rem;
+    padding: 0.5rem 0;
+    list-style: none;
+
+}
+
+/* Show menu on hover of the parent li.dropdown */
+.dropdown:hover .dropdown__menu {
+    display: block;
+}
+
+.dropdown__item {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem !important;
+    text-align: left;
+    color: #374151;
+    text-decoration: none;
+    font-size: 0.875rem;
+    background: none; /* Ensure no default button background */
+    border: none; /* Ensure no default button border */
+    cursor: pointer;
+}
+
+.dropdown__item:hover {
+    background-color: #F8B4B4;
+    color: black;
+}
+
+.dropdown__item--logout {
+    color: #ef4444;
+}
+
+.dropdown__item--logout:hover {
+    background-color: #F8B4B4;
+    color: black;
+}
+
+/* This creates the new CSS-only downward arrow for bottom navbar dropdowns */
+.bottom-navbar .dropdown > .dropdown__toggle::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #004242;
+    transition: border-color 0.3s;
+}
+
+/* This changes the arrow color on hover to match the text */
+.bottom-navbar .dropdown > .dropdown__toggle:hover::after {
+    border-top-color: white;
+}
+
+/* Mobile menu specific styles */
+/* Hide desktop navigation elements on small screens */
+@media (max-width: 767px) {
+    .main-navbar__actions {
+        /* On mobile, we might want to show only a hamburger icon and a cart icon,
+           and hide the user/login icon unless specifically needed for a mobile menu. */
+        gap: 1rem; /* Adjust gap for smaller screens */
+    }
+
+    /* Hide main navigation links on mobile */
+    .main-navbar__links {
+        display: none;
+    }
+
+    /* Hide bottom navbar on mobile, typically replaced by mobile menu */
+    .bottom-navbar {
+        display: none;
+    }
+
+    /* Hamburger Menu Icon */
+    .menu-toggle {
+        display: block; /* Show on mobile */
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        font-size: 24px; /* Adjust size as needed */
+        color: #374151; /* Match other action icons */
+        order: 3; /* Position it to the right of other actions if needed */
+        margin-left: 1rem; /* Space from other icons */
+    }
+
+    /* Hide menu toggle on larger screens */
+    @media (min-width: 768px) {
+        .menu-toggle {
+            display: none;
+        }
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff; /* White background for the menu */
+        z-index: 99998; /* Below main navbar, above other content */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%); /* Start off-screen to the right */
+        transition: transform 0.3s ease-in-out;
+        padding-top: 70px; /* Space for the fixed main navbar */
+    }
+
+    .mobile-menu.is-open {
+        transform: translateX(0); /* Slide in when open */
+    }
+
+    .mobile-menu__links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .mobile-menu__item {
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .mobile-menu__item:last-child {
+        border-bottom: none;
+    }
+
+    .mobile-menu__item a {
+        display: block;
+        font-size: 1.25rem; /* Larger font for mobile menu links */
+        font-weight: 600;
+        color: #1f2937; /* Dark text color */
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .mobile-menu__item a:hover {
+        color: #004242; /* Hover color */
+    }
+
+    /* Close button for mobile menu */
+    .mobile-menu__close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+        color: #374151;
+        z-index: 99999; /* Ensure it's clickable */
+    }
 }

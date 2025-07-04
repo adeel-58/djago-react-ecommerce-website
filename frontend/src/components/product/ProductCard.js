@@ -1,39 +1,50 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../../styles/ProductCard.css';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import { getProductImage, getProductDescription } from '../../utils/productAssets';
-
+import defaultImage from '../../assets/images/default.jpg';
+import '../../styles/ProductCard.css';
 const ProductCard = ({ product }) => {
-  const productImage = getProductImage(product.name);
-  const description = getProductDescription(product.name);
+  // Ensure product.name is defined before passing to utility functions
+  const productName = product.name || 'Unknown Product';
+  const image = getProductImage(productName);
+  const description = getProductDescription(productName);
 
   return (
     <div className="product-card">
-      <Link to={`/product/${product.id}`} className="product-card-link">
-        <div className="product-image-container">
+      <div className="product-image-wrapper">
+        {/* Make the image itself clickable */}
+        <Link to={`/product/${product.id}`}>
           <img
-            src={productImage}
-            alt={product.name || 'Product image'}
+            src={image || defaultImage} // Fallback to defaultImage if getProductImage returns nothing
+            alt={productName}
             className="product-image"
             onError={(e) => {
               e.target.onerror = null;
-              e.target.src = getProductImage(); // fallback to default image
+              e.target.src = defaultImage;
             }}
           />
-        </div>
-        <div className="product-info">
-          <h4 className="product-name">{product.name || 'Unnamed Product'}</h4>
-          <p className="product-description">{description}</p>
-          <p className="product-price">
-            ${product.price ? parseFloat(product.price).toFixed(2) : '0.00'}
-          </p>
-        </div>
-      </Link>
-      <div className="product-actions">
-        <Link to={`/product/${product.id}`} className="btn btn-outline product-view-button">
-          View Product
         </Link>
       </div>
+      {/* Group product info for better layout control */}
+      <div className="product-info">
+          <h3 className="product-name">{productName}</h3>
+          {/* Display description if available, otherwise a default message */}
+          <p className="product-description">
+            {description || 'No description available.'}
+          </p>
+          {/* Ensure price is a number and formatted correctly */}
+          <p className="product-price">${parseFloat(product.price || 0).toFixed(2)}</p>
+      </div>
+
+
+      {/* Add the View Product Button */}
+      {product.id && ( // Only show button if product has an ID for navigation
+        <div className="product-actions">
+          <Link to={`/product/${product.id}`} className="btn btn-primary product-view-button">
+            View Product
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

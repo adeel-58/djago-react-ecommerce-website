@@ -1,68 +1,185 @@
 // src/components/layout/Navbar.js
 
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'; // Import useState for managing input state
+import { Link, useNavigate } from 'react-router-dom'; // useNavigate for navigation
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux/slices/authSlice'; // Ensure this path is correct
-// import SearchForm from '../home/SearchForm'; // SearchForm is removed
-import '../../styles/Navbar.css'; // Path as per our last discussion
 
+// Import the stylesheet for the navbar
+import '../../styles/Navbar.css';
+
+// --- Correctly import icons from the src folder ---
+// The path '../../icons/' goes up two directories from 'src/components/layout/'
+import facebookIcon from '../../icons/facebook.png';
+import instagramIcon from '../../icons/instagram.png';
+import pinterestIcon from '../../icons/pinterest.png';
+import searchIcon from '../../icons/search.png';
+import cartIcon from '../../icons/cart.png';
+import heartIcon from '../../icons/heart.png';
+import userIcon from '../../icons/user.png';
+import logo from '../../icons/l2.png'; // Import your actual logo
+
+
+// --- Helper Components using the imported icons ---
+
+const TopBar = () => (
+    <div className="top-bar">
+        <div className="container top-bar__container">
+            <div className="top-bar__contact">
+                <span>Phone / xxxx xxx xxx</span>
+            </div>
+            <div className="top-bar__socials">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                    <img src={facebookIcon} alt="Facebook" />
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                    <img src={instagramIcon} alt="Instagram" />
+                </a>
+                <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">
+                    <img src={pinterestIcon} alt="Pinterest" />
+                </a>
+            </div>
+        </div>
+    </div>
+);
+
+const MainNavbar = ({ isAuthenticated, handleLogout }) => {
+    // State to hold the search input value
+    const [searchKeyword, setSearchKeyword] = useState('');
+    // Hook to programmatically navigate
+    const navigate = useNavigate();
+
+    // Handler for search form submission
+    const handleSearchSubmit = (e) => {
+        e.preventDefault(); // Prevent default form submission behavior
+        if (searchKeyword.trim()) { // Check if the input is not empty or just whitespace
+            navigate(`/search?q=${searchKeyword.trim()}`); // Navigate to search results page
+            setSearchKeyword(''); // Clear the search input after submission
+        } else {
+            navigate('/'); // If search is empty, navigate to home or handle as preferred
+        }
+    };
+
+    return (
+        <div className="main-navbar">
+            <div className="container main-navbar__container">
+                {/* Logo */}
+                <div className="main-navbar__brand">
+                    <Link to="/" className="brand-link">
+                        <img src={logo} alt="Nailova Logo" className="navbar-logo" /> {/* Added logo here */}
+                    </Link>
+                </div>
+
+                {/* Search Bar - Now functional */}
+                <div className="main-navbar__search">
+                    <form onSubmit={handleSearchSubmit} className="search-bar"> {/* Wrap input in a form */}
+                        <input
+                            type="text"
+                            placeholder="Search"
+                            className="search-bar__input"
+                            value={searchKeyword} // Bind input value to state
+                            onChange={(e) => setSearchKeyword(e.target.value)} // Update state on change
+                        />
+                        {/* Use a button for the search icon to trigger form submission */}
+                        <button type="submit" className="search-bar__icon-button">
+                            <img src={searchIcon} alt="Search" className="search-bar__icon" />
+                        </button>
+                    </form>
+                </div>
+
+                {/* Icons & Actions */}
+                <div className="main-navbar__actions">
+                    <Link to="/cart" className="action-link">
+                        <img src={cartIcon} alt="Shopping Cart" />
+                    </Link>
+                    <Link to="/wishlist" className="action-link">
+                        <img src={heartIcon} alt="Wishlist" />
+                    </Link>
+
+                    {/* Auth Section */}
+                    {!isAuthenticated ? (
+                        // When not logged in, user icon links to login page
+                        <Link to="/login" className="action-link">
+                            <img src={userIcon} alt="Login" />
+                        </Link>
+                    ) : (
+                        // When logged in, user icon has a dropdown
+                        <div className="dropdown">
+                            <span className="action-link dropdown__toggle">
+                                <img src={userIcon} alt="My Account" />
+                            </span>
+                            <div className="dropdown__menu">
+                                <Link to="/account/dashboard" className="dropdown__item">Dashboard</Link>
+                                <Link to="/account/orders" className="dropdown__item">Orders</Link>
+                                <Link to="/account/details" className="dropdown__item">Account Details</Link>
+                                <hr className="dropdown__divider" />
+                                <span onClick={handleLogout} className="dropdown__item dropdown__item--logout">
+                                    Logout
+                                </span>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const BottomNavbar = () => (
+    <div className="bottom-navbar">
+        <nav className="container bottom-navbar__container">
+            <ul className="bottom-navbar__links">
+                <li><Link to="/">Home</Link></li>
+                
+                {/* Shop Dropdown */}
+                <li className="dropdown">
+                    <Link to="/shop" className="dropdown__toggle">
+                        Shop
+                    </Link>
+                    <div className="dropdown__menu">
+                        <Link to="/shop/all-products" className="dropdown__item">All Products</Link>
+                        <Link to="/shop/new-arrivals" className="dropdown__item">New Arrivals</Link>
+                        <Link to="/shop/on-sale" className="dropdown__item">On Sale</Link>
+                    </div>
+                </li>
+
+                {/* Nails Accessories Dropdown */}
+                <li className="dropdown">
+                    <Link to="/category/accessories" className="dropdown__toggle">
+                        Nails Accessories 
+                    </Link>
+                    <div className="dropdown__menu">
+                        <Link to="/category/brushes" className="dropdown__item">Brushes</Link>
+                        <Link to="/category/glitter" className="dropdown__item">Glitter</Link>
+                        <Link to="/category/stickers" className="dropdown__item">Stickers</Link>
+                    </div>
+                </li>
+
+                <li><Link to="/reviews">Customers Reviews</Link></li>
+                <li><Link to="/about">About Nailova</Link></li>
+            </ul>
+        </nav>
+    </div>
+);
+
+// --- Main Exported Component ---
 const AppNavbar = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { isAuthenticated } = useSelector((state) => state.auth);
 
-  const { isAuthenticated } = useSelector((state) => state.auth);
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate('/login');
+    };
 
-  const handleLogout = () => {
-    dispatch(logout());
-    navigate('/login');
-  };
-
-  return (
-    <nav className="navbar">
-      <div className="navbar__container">
-        {/* Left Section: Brand/Logo */}
-        <div className="navbar-section navbar-section--left">
-          <Link className="navbar__brand" to="/">PetHub</Link> {/* Changed brand name */}
-        </div>
-
-        {/* Center Section: Categories */}
-        <div className="navbar-section navbar-section--center">
-          <div className="navbar__direct-categories">
-            <Link className="navbar__link navbar__category-link" to="/category/dog-supplies">Dog Supplies</Link>
-            <Link className="navbar__link navbar__category-link" to="/category/cat-supplies">Cat Supplies</Link>
-            <Link className="navbar__link navbar__category-link" to="/category/small-pets">Small Pets</Link>
-          </div>
-        </div>
-
-        {/* Right Section: Cart & Auth/Account */}
-        <div className="navbar-section navbar-section--right">
-          <Link className="navbar__link cart-link" to="/cart">
-            🛒 <span className="cart-text">Cart</span>
-          </Link>
-
-          {!isAuthenticated ? (
-            <div className="navbar__auth">
-              <Link className="navbar__link" to="/login">Login</Link>
-              <Link className="navbar__link navbar__register-btn" to="/register">Register</Link>
-            </div>
-          ) : (
-            <div className="dropdown account-dropdown">
-              <span className="dropdown__toggle">My Account</span>
-              <div className="dropdown__menu">
-                <Link to="/account/dashboard">Dashboard</Link>
-                <Link to="/account/orders">Orders</Link>
-                <Link to="/account/addresses">Addresses</Link>
-                <Link to="/account/details">Account Details</Link>
-                <hr />
-                <span onClick={handleLogout} className="dropdown__item logout">Logout</span>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </nav>
-  );
+    return (
+        <header className="app-navbar">
+            <TopBar />
+            <MainNavbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
+            <BottomNavbar />
+        </header>
+    );
 };
 
 export default AppNavbar;

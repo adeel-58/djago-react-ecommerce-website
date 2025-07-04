@@ -1,3 +1,4 @@
+//src/components/home/SearchForm.js
 import React, { useState } from 'react';
 import { Form, Button, InputGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';

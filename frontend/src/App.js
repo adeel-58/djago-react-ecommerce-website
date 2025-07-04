@@ -28,7 +28,7 @@ const App = () => {
     <Router>
       <div className="d-flex flex-column min-vh-100">
         <AppNavbar />
-        <main className="flex-grow-1 py-4 container">
+        <main className="flex-grow-1 py-4">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/product/:id" element={<ProductPage />} />
@@ -46,8 +46,8 @@ const App = () => {
             <Route path="/account/addresses" element={<Addresses />} />
             <Route path="/account/details" element={<AccountDetails />} />
             <Route path="/category/:slug" element={<CategoryPage />} />
-            <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/product/:id" element={<ProductDetailPage />} />
+            
             
 
             
