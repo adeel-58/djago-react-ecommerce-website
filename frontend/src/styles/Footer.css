@@ -1,11 +1,10 @@
 /* Footer.css */
 
 .footer-container {
-    background-color: #f7b0ad ; /* Updated background color */
+    background-color: #f7b0ad; /* Updated background color */
     padding: 40px 20px;
     font-family: 'Inter', sans-serif; /* Using Inter as per instructions */
     color: #113f3d; /* Updated font color */
-    
     margin-top: 20px; /* Add some margin from the content above */
 }
 
@@ -28,7 +27,7 @@
 .footer-left {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-start; /* Keep align-items: flex-start for desktop */
     flex: 6;
 }
 
@@ -74,21 +73,21 @@
 }
 
 .newsletter-button {
-    background-color: #333; /* Dark button background */
+    background-color: #113f3d; /* Dark button background */
     color: white;
     border: none;
     padding: 12px 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* This already centers the arrow icon */
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     transition: background-color 0.3s ease;
 }
 
 .newsletter-button:hover {
-    background-color: #555;
+    background-color: #0a2826;
 }
 
 .arrow-icon {
@@ -103,33 +102,28 @@
 }
 
 .social-icon {
-    /* Removed font-size and color as these are now image icons */
-    transition: transform 0.3s ease; /* Added transition for hover effect */
-    border-radius: 50%; /* Make social icons circular */
-    padding: 0px; /* Add padding for better touch target */
-    background-color: rgba(255, 255, 255, 0.5); /* Slightly transparent background */
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+    padding: 0px;
+    background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex; /* To center the image within the circular background */
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-
-
 .social-icon-img {
-    width: 35px; /* Set a specific width for the social icon images */
-    height: 35px; /* Set a specific height for the social icon images */
-    
-    image-rendering: auto; 
+    width: 35px;
+    height: 35px;
+    image-rendering: auto;
 }
 
-
 /* Middle and Right Section Styles */
-.footer-section .section-title { /* Made selector more specific */
-    font-size: 1.25rem; /* Updated font size for headings */
+.footer-section .section-title {
+    font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 15px;
-    color: #113f3d; /* Updated font color */
+    color: #113f3d;
 }
 
 .footer-links {
@@ -145,60 +139,124 @@
 .footer-links a {
     text-decoration: none;
     color: #555;
-    font-size: 0.938rem; /* Updated font size for paragraphs/small texts */
+    font-size: 0.938rem;
     transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: #0a2826; /* Changed hover color to a darker shade */
+    color: #0a2826;
 }
 
-.footer-section .help-support-title { /* Made selector more specific */
-    margin-top: 25px; /* Space between Learn and Help & Support */
+.footer-section .help-support-title {
+    margin-top: 25px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        gap: 20px;
     }
 
-    .footer-left,
-    .footer-middle,
-    .footer-right {
+    .footer-left {
+        width: 100%; /* Take full width on mobile */
         min-width: unset;
-        width: 100%;
+        order: 1; /* Ensure left section is first */
         padding: 10px 0;
+        align-items: flex-start; /* Left-align items within the left section */
+        text-align: left; /* Ensure text itself is left-aligned */
+        flex: none; /* Remove flex behavior */
+    }
+
+    .footer-logo {
+        width: 100%; /* Allow logo container to take full width */
+        text-align: left; /* Left-align the logo image itself */
+    }
+
+    .footer-logo img {
+        margin-left: 0; /* Remove auto margin if it was there for centering */
     }
 
     .newsletter-form {
-        max-width: 80%; /* Adjust for smaller screens */
-        margin-left: auto;
-        margin-right: auto;
+        max-width: 100%; /* Allow form to expand to section width */
+        margin-left: 0; /* Left-align the form */
+        margin-right: auto; /* Push it left */
+        text-align: left;
+    }
+
+    .newsletter-input {
+        text-align: left; /* Ensure input text is left-aligned */
     }
 
     .social-icons {
-        justify-content: center;
+        justify-content: flex-start; /* Left-align social icons */
+    }
+
+    /* Two-column layout for Shop & Learn/Help sections */
+    .footer-middle,
+    .footer-right {
+        width: calc(50% - 10px); /* Half width minus gap */
+        min-width: unset;
+        flex: none; /* Remove flex behavior */
+        padding: 10px 0;
+        text-align: left;
+        display: inline-block; /* Ensure they sit side by side */
+        vertical-align: top; /* Align to top */
+    }
+    
+    .footer-middle {
+        order: 2; /* Shop comes first in the two-column layout */
+        margin-right: 0; /* Remove any margin that might push it */
+    }
+
+    .footer-right {
+        order: 3; /* Learn & Help comes second */
+        margin-left: 0; /* Remove any margin that might create spacing issues */
     }
 }
 
+/* For very small screens - stack everything */
 @media (max-width: 480px) {
     .footer-container {
-        padding: 30px 10px;
+        padding: 30px 15px;
     }
 
-    .stay-in-touch {
-        font-size: 1.3rem; /* Kept existing responsive font size for mobile */
+    .footer-content {
+        gap: 15px;
     }
 
-    .newsletter-input,
-    .newsletter-button {
-        padding: 10px 15px;
+    .footer-left {
+        width: 100%;
+        text-align: left;
+        padding: 15px 0;
     }
 
-    .social-icon {
-        /* Adjusted for smaller screens if needed, but social-icon-img will control size */
+    .newsletter-text {
+        text-align: left;
+        padding-right: 20px;
+    }
+
+    .newsletter-form {
+        max-width: 85%; /* Slightly wider for better usability */
+        text-align: left;
+    }
+    
+    .newsletter-input {
+        text-align: left;
+        min-width: 120px; /* Ensure input has minimum width */
+    }
+
+    .social-icons {
+        justify-content: flex-start;
+    }
+
+    /* Keep two-column layout even on very small screens */
+    .footer-middle,
+    .footer-right {
+        width: calc(50% - 7px); /* Adjust for smaller gap */
+        min-width: unset;
+        padding: 15px 0;
+        text-align: left;
+        display: inline-block; /* Ensure they sit side by side */
+        vertical-align: top; /* Align to top */
     }
 }
