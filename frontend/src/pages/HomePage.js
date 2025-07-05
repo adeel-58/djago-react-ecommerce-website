@@ -30,7 +30,7 @@ const Hero = () => (
     <div className="hero-section" style={{ backgroundImage: `url(${heroBg})` }}>
         <div className="hero-overlay"></div>
         <div className="container hero-content">
-            <h2 className="hero-title">Welcome To Nailova Nail Shop</h2>
+            <h2 className="hero-title">Welcome To Nailova</h2>
             <div className="hero-cta">
                 <Link to="/shop" className="btn btn-primary">Shop Now</Link>
             </div>
@@ -82,7 +82,7 @@ const Categories = ({ onCategoryClick }) => {
             <div className="container">
                 <SectionTitle
                     title="Shop By Category"
-                    subtitle="Lorem ipsum is simply dummy text of the printing and typesetting industry"
+                    subtitle="Lorem ipsum is simply dummy text of the printing."
                 />
                 <div className="category-carousel" ref={carouselRef}> {/* Assign the ref here */}
                     {categories.map(cat => <CategoryCard key={cat.title} {...cat} onClick={onCategoryClick} />)}
@@ -99,7 +99,10 @@ const Categories = ({ onCategoryClick }) => {
 const ShopByColor = () => (
     <section className="shop-by-color-section">
         <div className="container">
-            <SectionTitle title="Shop By Color" />
+            <SectionTitle
+                    title="Shop By Color"
+                    subtitle="Lorem ipsum is simply dummy text of the printing."
+                />
             <div className="color-grid">
                 <div className="color-grid-item-large"><img src={color1} alt="Color 1"/></div>
                 <div className="color-grid-item-small"><img src={color2} alt="Color 2"/></div>

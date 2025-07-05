@@ -103,7 +103,7 @@ body {
 .hero-section {
     
     background-size: cover;
-    background-position: center 40%; 
+    background-position: center center; 
     color: white;
     height: 110vh;
     display: flex;
@@ -139,17 +139,7 @@ body {
 }
 
 /* Mobile specific styles for hero section */
-@media (max-width: 767px) {
-    .hero-section {
-        height: 80vh; /* Make image 100vh on mobile */
-    }
-    .hero-title {
-        font-size: 35px; /* Set heading to 35px on mobile */
-    }
-    .hero-content { /* Add this block for mobile-specific adjustment */
-        padding-top: 40vh; /* Example: Decrease this value to move content up */
-    }
-}
+
 
 @media (min-width: 768px) {
     .hero-title {
@@ -179,7 +169,21 @@ body {
         font-size: 2.188rem; /* md:text-5xl */
     }
 }
-
+@media (max-width: 767px) {
+    .hero-section {
+        height: 50vh; /* Make image 100vh on mobile */
+        background-position: 300% 200%;
+    }
+    .hero-title {
+        font-size: 25px; /* Set heading to 35px on mobile */
+    }
+    .hero-content { /* Add this block for mobile-specific adjustment */
+        padding-top: 30vh; /* Example: Decrease this value to move content up */
+    }
+    .hero-cta {
+        margin-top: 1rem;
+    }
+}
 /* --- SECTION TITLE --- */
 .section-title-container {
     text-align: center;
@@ -210,6 +214,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     font-size: 1.25rem !important;
+    padding-right: 22px !important;
+    padding-left: 22px !important;
 }
 
 /* --- CATEGORIES SECTION --- */
@@ -295,6 +301,31 @@ body {
     display: block;
 }
 
+@media (max-width: 767px){
+.categories-section{
+    padding-top: 1rem;
+}
+.section-subtitle {
+    font-size: 17px !important;
+    margin-top: 2px;
+}
+.carousel-controls {
+        display: none;
+    }
+.category-carousel {
+        scroll-left: 0;
+        transform: translateX(0);
+        justify-content: flex-start;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        scroll-snap-type: x mandatory; /* Optional: smooth snapping */
+    }
+    
+    /* Optional: Add scroll snapping to individual cards */
+    .category-card {
+        scroll-snap-align: start;
+    }
+
+}
 
 /* --- SHOP BY COLOR SECTION --- */
 .shop-by-color-section {
@@ -351,8 +382,32 @@ body {
         top: -10px; /* Adjust position if needed */
         left: -50px; /* Adjust position if needed */
     }
+    
     .color-grid {
-        grid-template-columns: 1fr; /* Single column for images on mobile */
+        grid-template-columns: 1fr 1fr; /* Two columns for mobile */
+        grid-template-rows: auto auto; /* Two rows */
+        gap: 10px; /* Add some spacing between images */
+    }
+    
+    /* First image spans both columns (full width) */
+    .color-grid-item-large {
+        grid-column: 1 / -1; /* Span from first to last column */
+    }
+    
+    /* Second and third images take one column each on the second row */
+    .color-grid-item-small:nth-child(2),
+    .color-grid-item-small:nth-child(3) {
+        grid-column: span 1; /* Each takes one column */
+    }
+    
+    /* Hide the 4th and 5th images on mobile */
+    .color-grid-item-small:nth-child(4),
+    .color-grid-item-small:nth-child(5) {
+        display: none;
+    }
+    
+    .shop-by-color-section{
+        padding: 0px;
     }
 }
 
@@ -559,6 +614,9 @@ body {
     .view-more-container {
         margin-top: 2.5rem;
     }
+    .section-title {
+        font-size: 25px;
+    }
 }
 
 
@@ -690,25 +748,6 @@ body {
     margin: 200px auto 40px auto;
 }
 
-/* product category */
-@media (max-width: 767px) {
-    /* Hide the large color grid item which contains color1 */
-    .color-grid-item-large {
-        display: none;
-    }
-
-    /* Hide the first small color grid item which contains color2 */
-    /* You can use :nth-child() or target it more specifically if you have other ways to identify it */
-    .color-grid-item-small:nth-child(1) { /* This targets the first 'small' item after the large one */
-        display: none;
-    }
-    /* Alternatively, if color2 is consistently the second image in the grid,
-       you can target the second child of the color-grid */
-    .color-grid > div:nth-child(2) { /* This targets the div containing color2, assuming color1 is the first */
-        display: none;
-    }
-}
-/* In your CSS file (e.g., HomePage.css) */
 
 @media (max-width: 767px) {
     /* Make the scrollbar thin */
