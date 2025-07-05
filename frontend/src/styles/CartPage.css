@@ -88,6 +88,97 @@
   gap: 20px; /* Space between cart item cards */
 }
 
+/* Cart Item Card */
+.cart-item {
+    display: flex; /* Use flexbox for horizontal alignment */
+    align-items: center; /* Vertically align items in the center */
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 15px;
+    gap: 15px; /* Space between image and details */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Soft shadow */
+}
+
+.cart-item img {
+    width: 80px; /* Fixed width for the image */
+    height: 80px; /* Fixed height for the image */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item-details-container {
+    flex-grow: 1; /* Allows details to take up remaining space */
+    display: flex;
+    flex-direction: column; /* Stack details vertically by default */
+    justify-content: center;
+}
+
+.cart-item-details-container h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    color: #113f3d;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.cart-item-details-container .item-price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0 0 10px 0;
+}
+
+.cart-item-quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px; /* Space below quantity controls */
+}
+
+.cart-item-quantity-controls button {
+    background-color: #f0f0f0;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cart-item-quantity-controls button:hover:not(:disabled) {
+    background-color: #e0e0e0;
+}
+
+.cart-item-quantity-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.cart-item-quantity-controls span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.cart-item-remove-action {
+    background-color: #ef4444; /* Red color for remove */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    align-self: flex-start; /* Align to the start of the flex container */
+}
+
+.cart-item-remove-action:hover {
+    background-color: #dc2626;
+}
+
+
 /* Cart Summary Section */
 .cart-summary-section {
   background-color: #FFFFFF; /* Aligned with Navbar background color */
@@ -182,14 +273,46 @@
   }
 }
 
-@media (max-width: 768px) {
-  .page-title {
-    font-size: 2rem;
-  }
-  .cart-page-container {
-    margin-top: 20px;
-    padding: 15px;
-  }
+@media (max-width: 767px) { /* Adjusted to 767px for consistency with other mobile breakpoints */
+    .cart-item {
+        flex-direction: row; /* Ensure horizontal layout for image and details */
+        align-items: center; /* Align items vertically in the center */
+        padding: 10px; /* Slightly reduced padding for mobile */
+    }
+
+    .cart-item img {
+        width: 70px; /* Smaller image on mobile */
+        height: 70px; /* Smaller image on mobile */
+    }
+
+    .cart-item-details-container {
+        flex-direction: row; /* Arrange details horizontally */
+        flex-wrap: wrap; /* Allow details to wrap to next line if needed */
+        align-items: center;
+        gap: 10px; /* Space between detail elements */
+        margin-left: 10px; /* Space from the image */
+    }
+
+    .cart-item-details-container h4,
+    .cart-item-details-container .item-price {
+        margin: 0; /* Remove default margins */
+        flex-basis: 100%; /* Make them take full width if they stack */
+    }
+
+    .cart-item-quantity-controls {
+        margin-bottom: 0; /* Remove bottom margin */
+        order: 2; /* Place quantity controls after price/name if wrapping */
+    }
+
+    .cart-item-remove-action {
+        align-self: center; /* Center the remove button vertically */
+        margin-left: auto; /* Push remove button to the far right */
+        padding: 6px 10px; /* Smaller padding for remove button */
+        font-size: 0.75rem; /* Smaller font size for remove button */
+    }
+    .cart-page-container {
+      margin: 80px auto 0px auto;
+    }
 }
 
 @media (max-width: 480px) {

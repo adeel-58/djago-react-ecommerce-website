@@ -5,6 +5,7 @@ html, body {
     /* Ensure html and body establish a high stacking context */
     position: relative;
     z-index: 1; /* A base z-index for the document flow */
+    overflow-x: hidden; /* Prevent horizontal scroll when mobile menu slides in */
 }
 
 .app-navbar {
@@ -95,7 +96,7 @@ html, body {
     background-size: cover; /* Adjust if needed (e.g., 'contain') */
 
     /* --- Set the low opacity here --- */
-    opacity: 0.5; /* Example: 20% opacity. Adjust between 0.1 to 0.5 */
+    opacity: 0.10; /* Example: 20% opacity. Adjust between 0.1 to 0.5 */
 
     /* Places the background behind the content */
     z-index: 0;
@@ -203,7 +204,8 @@ html, body {
 .main-navbar__actions {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.5rem; /* Adjusted gap for spacing between icons */
+    padding-top: 10px; /* Increased top padding for all actions */
 }
 
 /* Styling for action-link buttons (User/Login toggle) */
@@ -396,7 +398,8 @@ html, body {
     .main-navbar__actions {
         /* On mobile, we might want to show only a hamburger icon and a cart icon,
            and hide the user/login icon unless specifically needed for a mobile menu. */
-        gap: 1rem; /* Adjust gap for smaller screens */
+        gap: 1rem; /* Decreased gap for spacing between icons */
+        padding-top: 15px; /* Increased top padding for all actions */
     }
 
     /* Hide main navigation links on mobile */
@@ -409,88 +412,100 @@ html, body {
         display: none;
     }
 
+    /* Hide wishlist icon on mobile */
+    .wishlist-icon {
+        display: none;
+    }
+
     /* Hamburger Menu Icon */
     .menu-toggle {
         display: block; /* Show on mobile */
         background: none;
         border: none;
-        padding: 0;
+        padding: 0; /* Reset individual padding-top */
         cursor: pointer;
         font-size: 24px; /* Adjust size as needed */
-        color: #374151; /* Match other action icons */
+        color: #113f3d; /* Changed hamburger color */
         order: 3; /* Position it to the right of other actions if needed */
-        margin-left: 1rem; /* Space from other icons */
+        margin-left: 0.5rem; /* Adjusted margin to fine-tune spacing with the new gap */
+        padding-right: 10px; /* Adjust padding to move it left/right */
     }
+}
 
-    /* Hide menu toggle on larger screens */
-    @media (min-width: 768px) {
-        .menu-toggle {
-            display: none;
-        }
+/* Hide menu toggle on larger screens */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
     }
+}
 
-    /* Mobile Menu Overlay */
-    .mobile-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #fff; /* White background for the menu */
-        z-index: 99998; /* Below main navbar, above other content */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transform: translateX(100%); /* Start off-screen to the right */
-        transition: transform 0.3s ease-in-out;
-        padding-top: 70px; /* Space for the fixed main navbar */
-    }
+/* Mobile Menu Overlay */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0; /* Changed from left: 0 to right: 0 to slide from right */
+    width: 100%; /* Full width */
+    max-width: 300px; /* Max width for the menu itself */
+    height: 100%;
+    background-color: #fff; /* White background for the menu */
+    z-index: 99998; /* Below main navbar, above other content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the top */
+    transform: translateX(100%); /* Start off-screen to the right */
+    transition: transform 0.3s ease-in-out;
+    padding-top: 70px; /* Space for the fixed main navbar */
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2); /* Add shadow for better visual */
+}
 
-    .mobile-menu.is-open {
-        transform: translateX(0); /* Slide in when open */
-    }
+.mobile-menu.is-open {
+    transform: translateX(0); /* Slide in when open */
+}
 
-    .mobile-menu__links {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        text-align: center;
-    }
+.mobile-menu__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
 
-    .mobile-menu__item {
-        padding: 1rem 0;
-        border-bottom: 1px solid #eee;
-    }
+.mobile-menu__item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
 
-    .mobile-menu__item:last-child {
-        border-bottom: none;
-    }
+.mobile-menu__item:last-child {
+    border-bottom: none;
+}
 
-    .mobile-menu__item a {
-        display: block;
-        font-size: 1.25rem; /* Larger font for mobile menu links */
-        font-weight: 600;
-        color: #1f2937; /* Dark text color */
-        text-decoration: none;
-        transition: color 0.2s;
-    }
+.mobile-menu__item a,
+.mobile-menu__item span { /* Added span for logout link */
+    display: block;
+    font-size: 1.25rem; /* Larger font for mobile menu links */
+    font-weight: 600;
+    color: #113f3d; /* Changed mobile menu font color */
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer; /* Add cursor for span */
+    font-family: 'Montserrat', sans-serif; /* Changed mobile menu font style */
+}
 
-    .mobile-menu__item a:hover {
-        color: #004242; /* Hover color */
-    }
+.mobile-menu__item a:hover,
+.mobile-menu__item span:hover {
+    color: #004242; /* Hover color */
+}
 
-    /* Close button for mobile menu */
-    .mobile-menu__close-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: none;
-        border: none;
-        font-size: 30px;
-        cursor: pointer;
-        color: #374151;
-        z-index: 99999; /* Ensure it's clickable */
-    }
+/* Close button for mobile menu */
+.mobile-menu__close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #374151;
+    z-index: 99999; /* Ensure it's clickable */
 }

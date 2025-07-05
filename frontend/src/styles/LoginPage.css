@@ -10,7 +10,7 @@
 /* --- GOOGLE FONT IMPORT (Ensure all needed weights are here) --- */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-.auth-page-container {
+.login-page-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -177,5 +177,8 @@
   }
   .auth-submit-button {
     font-size: 0.938rem; /* Aligned with general button font size */
+  }
+  .login-page-container {
+    margin: 70px auto 0px auto;
   }
 }

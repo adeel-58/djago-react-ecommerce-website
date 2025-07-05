@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for navigation
-import { getProductImage, getProductDescription } from '../../utils/productAssets';
+import { getProductImage } from '../../utils/productAssets';
 import defaultImage from '../../assets/images/default.jpg';
 import '../../styles/ProductCard.css';
 const ProductCard = ({ product }) => {
   // Ensure product.name is defined before passing to utility functions
   const productName = product.name || 'Unknown Product';
   const image = getProductImage(productName);
-  const description = getProductDescription(productName);
+ // const description = getProductDescription(productName);
 
   return (
     <div className="product-card">
@@ -29,9 +29,7 @@ const ProductCard = ({ product }) => {
       <div className="product-info">
           <h3 className="product-name">{productName}</h3>
           {/* Display description if available, otherwise a default message */}
-          <p className="product-description">
-            {description || 'No description available.'}
-          </p>
+          
           {/* Ensure price is a number and formatted correctly */}
           <p className="product-price">${parseFloat(product.price || 0).toFixed(2)}</p>
       </div>

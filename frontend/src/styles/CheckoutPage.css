@@ -262,6 +262,7 @@
   .checkout-page-container {
     margin-top: 20px;
     padding: 15px;
+    margin: 80px auto 0px auto;
   }
   .shipping-info-section, .order-summary-card {
     padding: 20px;

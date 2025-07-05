@@ -32,7 +32,7 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-page-container">
+    <div className="login-page-container">
       <div className="auth-form-container">
         <h2 className="auth-title">Welcome Back!</h2>
         <p className="auth-subtitle">Login to continue to your pet's paradise.</p>

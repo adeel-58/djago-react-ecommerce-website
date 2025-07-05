@@ -1,6 +1,6 @@
 /* src/styles/RegisterPage.css */
 
-/* This file assumes that common auth page styles (like .auth-page-container, 
+/* This file assumes that common auth page styles (like .register-page-container, 
   .auth-form-container, .auth-title, .form-group, .form-label, .form-control, 
   .btn, .btn-primary, .auth-submit-button, .auth-error-message, .auth-redirect-link) 
   are either:
@@ -13,9 +13,9 @@
 */
 
 /* Example: If you wanted a slightly different background for the register page container */
-.auth-page-container.register-page-variant {
+.register-page-container.register-page-variant {
   /* background-color: #e0f7fa; */ /* Example: A slightly different light blue */
-  /* Or keep it the same as login by not overriding if .auth-page-container is styled globally */
+  /* Or keep it the same as login by not overriding if .register-page-container is styled globally */
 }
 
 /* Specific adjustments for the register form, if any */
@@ -29,7 +29,7 @@
 }
 
 /* Styles for Auth Pages (Login & Register) */
-.auth-page-container {
+.register-page-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -160,5 +160,12 @@
   }
   .auth-submit-button {
     font-size: 1rem;
+  }
+  .register-page-container{
+    margin: 40px auto 0px auto;
+    background-color : white;
+  }
+  .register-page-container .register-page-variant {
+    background-color : white;
   }
 }

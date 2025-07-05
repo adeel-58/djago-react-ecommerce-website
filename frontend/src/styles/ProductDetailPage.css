@@ -280,3 +280,11 @@
     font-size: 0.95rem; /* Kept original */
   }
 }
+
+
+@media (max-width: 480px) {
+    .product-detail-page-container {
+        padding: 15px;
+        margin-top: 80px;
+    }
+}

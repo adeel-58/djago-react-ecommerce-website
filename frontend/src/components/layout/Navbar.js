@@ -43,7 +43,7 @@ const TopBar = () => (
     </div>
 );
 
-const MainNavbar = ({ isAuthenticated, handleLogout }) => {
+const MainNavbar = ({ isAuthenticated, handleLogout, toggleMobileMenu }) => {
     // State to hold the search input value
     const [searchKeyword, setSearchKeyword] = useState('');
     // Hook to programmatically navigate
@@ -92,7 +92,7 @@ const MainNavbar = ({ isAuthenticated, handleLogout }) => {
                     <Link to="/cart" className="action-link">
                         <img src={cartIcon} alt="Shopping Cart" />
                     </Link>
-                    <Link to="/wishlist" className="action-link">
+                    <Link to="/wishlist" className="action-link wishlist-icon"> {/* Added class for mobile hiding */}
                         <img src={heartIcon} alt="Wishlist" />
                     </Link>
 
@@ -119,6 +119,11 @@ const MainNavbar = ({ isAuthenticated, handleLogout }) => {
                             </div>
                         </div>
                     )}
+
+                    {/* Hamburger Menu Icon (visible on mobile) */}
+                    <button className="menu-toggle" onClick={toggleMobileMenu} aria-label="Open mobile menu">
+                        &#9776; {/* Unicode for hamburger icon */}
+                    </button>
                 </div>
             </div>
         </div>
@@ -162,22 +167,47 @@ const BottomNavbar = () => (
     </div>
 );
 
+// New MobileMenu Component
+const MobileMenu = ({ isOpen, toggleMenu, isAuthenticated, handleLogout }) => {
+    return (
+        <div className={`mobile-menu ${isOpen ? 'is-open' : ''}`}>
+            <button className="mobile-menu__close-btn" onClick={toggleMenu} aria-label="Close mobile menu">
+                &times; {/* Unicode for multiplication sign (X icon) */}
+            </button>
+            <ul className="mobile-menu__links">
+                <li className="mobile-menu__item"><Link to="/" onClick={toggleMenu}>Home</Link></li>
+                <li className="mobile-menu__item"><Link to="/shop" onClick={toggleMenu}>Shop</Link></li>
+                <li className="mobile-menu__item"><Link to="/shop/new-arrivals" onClick={toggleMenu}>New Arrivals</Link></li>
+                <li className="mobile-menu__item"><Link to="/about" onClick={toggleMenu}>About Nailova</Link></li>
+                {/* Removed other menu items as per request */}
+            </ul>
+        </div>
+    );
+};
+
+
 // --- Main Exported Component ---
 const AppNavbar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { isAuthenticated } = useSelector((state) => state.auth);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu
 
     const handleLogout = () => {
         dispatch(logout());
         navigate('/login');
     };
 
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
     return (
         <header className="app-navbar">
             <TopBar />
-            <MainNavbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
+            <MainNavbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} toggleMobileMenu={toggleMobileMenu} />
             <BottomNavbar />
+            <MobileMenu isOpen={isMobileMenuOpen} toggleMenu={toggleMobileMenu} isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
         </header>
     );
 };
