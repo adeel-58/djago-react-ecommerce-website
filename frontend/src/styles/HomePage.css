@@ -183,6 +183,7 @@ body {
     .hero-cta {
         margin-top: 1rem;
     }
+   
 }
 /* --- SECTION TITLE --- */
 .section-title-container {
@@ -318,11 +319,15 @@ body {
         justify-content: flex-start;
         overflow-x: auto; /* Enable horizontal scrolling */
         scroll-snap-type: x mandatory; /* Optional: smooth snapping */
+        gap: 10px;
     }
     
     /* Optional: Add scroll snapping to individual cards */
     .category-card {
         scroll-snap-align: start;
+    }
+     .section-title-container {
+        margin-bottom: 0px;
     }
 
 }
@@ -363,7 +368,7 @@ body {
 .shop-by-color-section::before {
     content: "";
     position: absolute;
-    top: 0px;    /* move part of the image above view */
+    top: 40px;    /* move part of the image above view */
     left: -80px;   /* move part of the image off-screen to the left */
     width: 400px;  /* size of the image */
     height: 400px;
@@ -379,8 +384,8 @@ body {
     .shop-by-color-section::before {
         width: 200px; /* Smaller width for flower image */
         height: 200px; /* Smaller height for flower image */
-        top: -10px; /* Adjust position if needed */
-        left: -50px; /* Adjust position if needed */
+        top: 65px; /* Adjust position if needed */
+        left: -80px; /* Adjust position if needed */
     }
     
     .color-grid {
@@ -446,7 +451,7 @@ body {
 
 .stat-label {
     margin-top: 0.5rem;
-    font-size: 0.875rem; /* text-sm */
+    font-size: 17px; /* text-sm */
     color: #d1d5db; /* text-gray-300 */
     margin-bottom: 0;
 }
@@ -456,14 +461,28 @@ body {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
+@media (max-width: 768px){
+    .stat-number {
+        font-size: 25px;
+    }
+    .remove1, .remove2, .remove3, .remove4{
+        display: none;
+    }
+    .stats-bar{
+        padding: 0.1rem;
+    }
+    .stat-number{
+        padding-top: 1.4rem;
+    }
+}
 
-
+/* --- ABOUT SECTION --- */
 /* --- ABOUT SECTION --- */
 .about-section {
     background-color: #F8B4B4;
     background-image: url('../assets/images/about-us.jpg'); /* Replace with actual path */
     background-size: cover;
-    background-position: center;
+    background-position: 100% 35%;
     padding: 4rem 0; /* Consistent spacing */
     min-height: 70vh;
     position: relative; /* Create a positioning context */
@@ -473,25 +492,42 @@ body {
 
 .about-content {
     display: flex;
-    justify-content: flex-end;  /* Align to the right side */
+    justify-content: space-between;  /* Space between the two containers */
     align-items: center;
     text-align: left;
     width: 100%;
     padding: 0 2rem; /* Reasonable padding */
 }
 
+.about-empty-container {
+    flex: 0.8; /* Takes up 50% of the space */
+}
+
+.about-text-container {
+    flex: 1.2; /* Takes up 50% of the space */
+    display: flex;
+    justify-content: flex-start; /* Align content to the left within this container */
+}
+
 .about-text {
     color: #004242;
     max-width: 600px;
+    padding-bottom: 30px;
 }
 
-.about-text p {
+.about-text-p {
     margin-top: 1.5rem; /* Increased spacing */
     font-size: 1.125rem; 
     font-family: 'Montserrat', sans-serif; 
     color: white;
 }
-
+.about-text-mobile{
+    margin-top: 1.5rem; /* Increased spacing */
+    font-size: 1.125rem; 
+    font-family: 'Montserrat', sans-serif; 
+    color: white;
+    display: none;
+}
 .about-text .btn-secondary {
     background-color: white !important;
     color: #113f3d !important;
@@ -500,7 +536,7 @@ body {
     border: none !important;
     font-weight: 600 !important;
     font-size: 0.938rem !important;
-    margin-top: 2.5rem; /* Increased spacing */
+    margin-top: 1rem; /* Increased spacing */
 }
 
 .about-title {
@@ -510,15 +546,57 @@ body {
     color: white; /* White text color */
     margin-bottom: 1.5rem; /* Increased spacing */
 }
-
 @media (max-width: 767px) {
-    .about-content {
-        justify-content: center;
-        text-align: center;
-    }
-    .about-section { /* Added for mobile-specific height adjustment */
-        min-height: 50vh; /* Adjust this value to your desired height */
-    }
+.about-title {
+    font-size:  25px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif; /* Apply Montserrat font */
+    color: white; /* White text color */
+    margin-bottom: 0rem; /* Increased spacing */
+    
+}
+.about-text {
+    color: #004242;
+    max-width: 600px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.about-text-p {
+    margin-top: 0rem; /* Increased spacing */
+    font-size: 1.125rem; 
+    font-family: 'Montserrat', sans-serif; 
+    color: white;
+    display: none;
+}
+.about-text-mobile{
+    margin-top: 1rem; /* Increased spacing */
+    font-size: 1.125rem; 
+    font-family: 'Montserrat', sans-serif; 
+    color: white;
+    display: block;
+}
+.about-section {
+    background-color: #F8B4B4;
+    background-image: url('../assets/images/about-us.jpg'); /* Replace with actual path */
+    background-size: cover;
+    /*background-position: 60% 25%;*/
+    background-position: center center;
+    padding: 4rem 0; /* Consistent spacing */
+    min-height: 30vh;
+    position: relative; /* Create a positioning context */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center vertically */
+}
+.about-text .btn-secondary {
+    background-color: white !important;
+    color: #113f3d !important;
+    padding: 0.7rem 2.5rem !important;
+    border-radius: 25px !important;
+    border: none !important;
+    font-weight: 600 !important;
+    font-size: 0.938rem !important;
+    margin-top: 0rem; /* Increased spacing */
+}
 }
 
 /* --- NEW ARRIVALS / FEATURED PRODUCTS --- */
@@ -581,6 +659,10 @@ body {
 } 
 
 @media (max-width: 767px) {
+    .new-arrivals-section {
+        padding-top: 2.5rem;
+        padding-bottom: 0rem;
+    }
     .product-grid {
         grid-template-columns: repeat(2, 1fr); /* Ensure 2 columns on mobile */
         gap: 0.5rem; /* Decreased gap for tighter spacing between cards */
@@ -612,7 +694,8 @@ body {
         padding: 0px !important; /* Removed padding as requested */
     }
     .view-more-container {
-        margin-top: 2.5rem;
+        margin-top: 30px;
+        padding-top: 10px;
     }
     .section-title {
         font-size: 25px;
@@ -724,22 +807,21 @@ body {
     margin-top: 20px;
 }
 
-.btn-write-review {
-    background-color: #2D3748; /* Dark greenish-blue from button */
-    color: white;
-    padding: 14px 35px;
-    border: none;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+@media (max-width: 767px) {
+
+    .customer-reviews-section{
+        margin-bottom: 0rem;
+        padding-bottom: 0rem;
+    }
+
 }
 
-.btn-write-review:hover {
-    background-color: #1A202C;
-    transform: translateY(-2px);
-}
+
+
+
+
+
+
 .product-grid {
     margin: 200px 80px 40px 80px;
 }

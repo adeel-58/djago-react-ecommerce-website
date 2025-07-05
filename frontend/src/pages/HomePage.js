@@ -122,19 +122,26 @@ const StatsBar = () => (
         <div className="container stats-bar-content">
             <div><p className="stat-number">1k+</p><p className="stat-label">Happy Customers</p></div>
             <div><p className="stat-number">20+</p><p className="stat-label">Beauty Brands</p></div>
-            <div><p className="stat-number">98%</p><p className="stat-label">Positive Ratings</p></div>
-            <div><p className="stat-number">86%</p><p className="stat-label">Natural & Original</p></div>
+            <div><p className="stat-number remove1">98%</p><p className="stat-label remove2">Positive Ratings</p></div>
+            <div><p className="stat-number remove3">86%</p><p className="stat-label remove4">Natural & Original</p></div>
         </div>
     </section>
 );
 
+
 const About = () => (
     <section className="about-section">
         <div className="container about-content">
-            <div className="about-text">
-                <h2 className="about-title">About Nailova</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
-                <Link to="/about" className="btn btn-secondary">Read More</Link>
+            <div className="about-empty-container">
+                {/* Empty container - takes up left 50% */}
+            </div>
+            <div className="about-text-container">
+                <div className="about-text">
+                    <h2 className="about-title">About Nailova</h2>
+                    <p className='about-text-mobile'>Lorem Ipsum is simply dummy text</p>
+                    <p className='about-text-p'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                    <Link to="/about" className="btn btn-secondary">Read More</Link>
+                </div>
             </div>
         </div>
     </section>
@@ -147,7 +154,10 @@ const NewArrivals = ({ products }) => {
     return (
         <section className="new-arrivals-section">
             <div className="container">
-                <SectionTitle title="New Arrivals" />
+                <SectionTitle
+                    title="New Arrivals"
+                    subtitle="Lorem ipsum is simply dummy text of the printing."
+                />
                 <div className="product-grid">
                     {products.length > 0 ? (
                         products.map(product => (
@@ -218,10 +228,7 @@ const CustomerReviews = () => {
                         </div>
                     ))}
                 </div>
-                <div className="write-review-container">
-                    {/* MODIFICATION 2: Changed className to use existing button styles */}
-                    <button className="btn btn-secondary">Write Your Review</button>
-                </div>
+                
             </div>
         </section>
     );
