@@ -1,11 +1,11 @@
 /* Footer.css */
 
 .footer-container {
-    background-color: #f7b0ad; /* Updated background color */
+    background-color: #f7b0ad;
     padding: 40px 20px;
-    font-family: 'Inter', sans-serif; /* Using Inter as per instructions */
-    color: #113f3d; /* Updated font color */
-    margin-top: 20px; /* Add some margin from the content above */
+    font-family: 'Inter', sans-serif;
+    color: #113f3d;
+    margin-top: 20px;
 }
 
 .footer-content {
@@ -14,12 +14,12 @@
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
-    gap: 30px; /* Space between sections */
+    gap: 30px;
 }
 
 .footer-section {
     flex: 1;
-    min-width: 250px; /* Minimum width for sections to wrap nicely */
+    min-width: 250px;
     padding: 15px;
 }
 
@@ -27,26 +27,27 @@
 .footer-left {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Keep align-items: flex-start for desktop */
-    flex: 6;
+    align-items: flex-start;
+    flex: 2; /* Take more space than other sections */
+    min-width: 300px;
 }
 
 .footer-logo img {
     max-width: 150px;
     height: auto;
     margin-bottom: 20px;
-    border-radius: 5px; /* Rounded corners for the logo */
+    border-radius: 5px;
 }
 
 .stay-in-touch {
-    font-size: 1.25rem; /* Updated font size for headings */
+    font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #113f3d; /* Updated font color */
+    color: #113f3d;
 }
 
 .newsletter-text {
-    font-size: 0.938rem; /* Updated font size for paragraphs/small texts */
+    font-size: 0.938rem;
     line-height: 1.5;
     margin-bottom: 20px;
     color: #555;
@@ -57,8 +58,8 @@
     width: 100%;
     max-width: 300px;
     margin-bottom: 20px;
-    border-radius: 25px; /* Rounded corners for the entire form */
-    overflow: hidden; /* Ensures input and button corners are rounded */
+    border-radius: 25px;
+    overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -67,20 +68,20 @@
     padding: 12px 20px;
     border: none;
     outline: none;
-    font-size: 0.938rem; /* Updated font size for paragraphs/small texts */
+    font-size: 0.938rem;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
 }
 
 .newsletter-button {
-    background-color: #113f3d; /* Dark button background */
+    background-color: #113f3d;
     color: white;
     border: none;
     padding: 12px 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center; /* This already centers the arrow icon */
+    justify-content: center;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     transition: background-color 0.3s ease;
@@ -112,6 +113,10 @@
     justify-content: center;
 }
 
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
 .social-icon-img {
     width: 35px;
     height: 35px;
@@ -119,7 +124,13 @@
 }
 
 /* Middle and Right Section Styles */
-.footer-section .section-title {
+.footer-middle,
+.footer-right {
+    flex: 1;
+    min-width: 200px;
+}
+
+.section-title {
     font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 15px;
@@ -147,116 +158,142 @@
     color: #0a2826;
 }
 
-.footer-section .help-support-title {
+.help-support-title {
     margin-top: 25px;
 }
 
-/* Responsive adjustments */
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
-    .footer-content {
-        gap: 20px;
-    }
-
-    .footer-left {
-        width: 100%; /* Take full width on mobile */
-        min-width: unset;
-        order: 1; /* Ensure left section is first */
-        padding: 10px 0;
-        align-items: flex-start; /* Left-align items within the left section */
-        text-align: left; /* Ensure text itself is left-aligned */
-        flex: none; /* Remove flex behavior */
-    }
-
-    .footer-logo {
-        width: 100%; /* Allow logo container to take full width */
-        text-align: left; /* Left-align the logo image itself */
-    }
-
-    .footer-logo img {
-        margin-left: 0; /* Remove auto margin if it was there for centering */
-    }
-
-    .newsletter-form {
-        max-width: 100%; /* Allow form to expand to section width */
-        margin-left: 0; /* Left-align the form */
-        margin-right: auto; /* Push it left */
-        text-align: left;
-    }
-
-    .newsletter-input {
-        text-align: left; /* Ensure input text is left-aligned */
-    }
-
-    .social-icons {
-        justify-content: flex-start; /* Left-align social icons */
-    }
-
-    /* Two-column layout for Shop & Learn/Help sections */
-    .footer-middle,
-    .footer-right {
-        width: calc(50% - 10px); /* Half width minus gap */
-        min-width: unset;
-        flex: none; /* Remove flex behavior */
-        padding: 10px 0;
-        text-align: left;
-        display: inline-block; /* Ensure they sit side by side */
-        vertical-align: top; /* Align to top */
-    }
-    
-    .footer-middle {
-        order: 2; /* Shop comes first in the two-column layout */
-        margin-right: 0; /* Remove any margin that might push it */
-    }
-
-    .footer-right {
-        order: 3; /* Learn & Help comes second */
-        margin-left: 0; /* Remove any margin that might create spacing issues */
-    }
-}
-
-/* For very small screens - stack everything */
-@media (max-width: 480px) {
     .footer-container {
         padding: 30px 15px;
     }
 
     .footer-content {
-        gap: 15px;
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
     }
 
+    /* Left section takes full width */
     .footer-left {
         width: 100%;
+        min-width: unset;
+        flex: none;
+        padding: 0;
+        align-items: flex-start;
         text-align: left;
-        padding: 15px 0;
+        margin-bottom: 20px;
     }
 
-    .newsletter-text {
+    .footer-logo {
+        width: 100%;
         text-align: left;
-        padding-right: 20px;
     }
 
     .newsletter-form {
-        max-width: 85%; /* Slightly wider for better usability */
-        text-align: left;
+        max-width: 100%;
     }
-    
+
     .newsletter-input {
         text-align: left;
-        min-width: 120px; /* Ensure input has minimum width */
     }
 
     .social-icons {
         justify-content: flex-start;
     }
 
-    /* Keep two-column layout even on very small screens */
+    /* Create a flex container for middle and right sections */
     .footer-middle,
     .footer-right {
-        width: calc(50% - 7px); /* Adjust for smaller gap */
+        width: 48%;
         min-width: unset;
-        padding: 15px 0;
+        flex: none;
+        padding: 0;
         text-align: left;
-        display: inline-block; /* Ensure they sit side by side */
-        vertical-align: top; /* Align to top */
+        box-sizing: border-box;
+    }
+
+    /* Override the flex-direction: column to make these two sit side by side */
+    .footer-content > .footer-middle,
+    .footer-content > .footer-right {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    /* Alternative approach - use flexbox for just these two */
+    .footer-content {
+        display: block; /* Reset to block for mobile */
+    }
+
+    .footer-left {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Create a wrapper effect with flexbox */
+    .footer-middle {
+        display: inline-block;
+        width: 48%;
+        vertical-align: top;
+        padding-right: 2%;
+    }
+
+    .footer-right {
+        display: inline-block;
+        width: 48%;
+        vertical-align: top;
+        padding-left: 2%;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 25px 10px;
+    }
+
+    .footer-left {
+        margin-bottom: 15px;
+    }
+
+    .newsletter-text {
+        padding-right: 10px;
+    }
+
+    .newsletter-form {
+        max-width: 90%;
+    }
+
+    .newsletter-input {
+        min-width: 100px;
+    }
+
+    /* Keep two-column layout for Shop and Learn sections */
+    .footer-middle {
+        width: 48%;
+        padding-right: 2%;
+        display: inline-block;
+        vertical-align: top;
+        padding-top: 15px;
+    }
+
+    .footer-right {
+        width: 48%;
+        padding-left: 2%;
+        display: inline-block;
+        vertical-align: top;
+        padding-top: 15px;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+    }
+
+    .footer-links a {
+        font-size: 0.875rem;
+    }
+    .help-support-title{
+        padding-top: 10px;
     }
 }
