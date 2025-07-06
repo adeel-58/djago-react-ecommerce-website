@@ -111,7 +111,7 @@ body {
     justify-content: center;
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    margin-bottom: 2rem; /* Added margin to create space below */
+    margin-bottom: 0rem; /* Added margin to create space below */
    
     position: relative;
     z-index: 1; /* Lower than navbar */
@@ -222,7 +222,9 @@ body {
 /* --- CATEGORIES SECTION --- */
 .categories-section {
     background-color: white;
-    padding: 3rem 0; /* Consistent spacing */
+    
+    padding-top: 5rem;
+    padding-bottom: 2.5rem;
 }
 
 .category-carousel {
@@ -304,7 +306,7 @@ body {
 
 @media (max-width: 767px){
 .categories-section{
-    padding-top: 1rem;
+    padding-top: 2.5rem;
 }
 .section-subtitle {
     font-size: 17px !important;
