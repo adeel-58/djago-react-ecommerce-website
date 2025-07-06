@@ -1,0 +1,53 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      
+      "src": "backend/backend/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.10"
+      }
+    },
+    {
+      
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build" 
+      }
+    }
+  ],
+  "routes": [
+    
+    {
+      "src": "/static/(.*)",
+      "dest": "backend/staticfiles/$1"
+    },
+    
+    {
+      "src": "/media/(.*)",
+      "dest": "backend/media/$1"
+    },
+    
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/backend/wsgi.py"
+    },
+   
+    {
+      "src": "/(.*)",
+      "dest": "backend/staticfiles/build/index.html"
+    }
+  ],
+  "env": {
+    
+    "DJANGO_SETTINGS_MODULE": "backend.settings",
+    
+    "SECRET_KEY": "your_actual_secret_key_from_vercel_env"
+    
+  },
+
+  "outputDirectory": "frontend/build"
+}
