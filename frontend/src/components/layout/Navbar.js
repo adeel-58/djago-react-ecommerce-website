@@ -92,7 +92,7 @@ const MainNavbar = ({ isAuthenticated, handleLogout, toggleMobileMenu }) => {
                     <Link to="/cart" className="action-link">
                         <img src={cartIcon} alt="Shopping Cart" />
                     </Link>
-                    <Link to="/wishlist" className="action-link wishlist-icon"> {/* Added class for mobile hiding */}
+                    <Link to="#" className="action-link wishlist-icon"> {/* Added class for mobile hiding */}
                         <img src={heartIcon} alt="Wishlist" />
                     </Link>
 
@@ -109,9 +109,9 @@ const MainNavbar = ({ isAuthenticated, handleLogout, toggleMobileMenu }) => {
                                 <img src={userIcon} alt="My Account" />
                             </span>
                             <div className="dropdown__menu">
-                                <Link to="/account/dashboard" className="dropdown__item">Dashboard</Link>
-                                <Link to="/account/orders" className="dropdown__item">Orders</Link>
-                                <Link to="/account/details" className="dropdown__item">Account Details</Link>
+                                <Link to="#" className="dropdown__item">Dashboard</Link>
+                                <Link to="#" className="dropdown__item">Orders</Link>
+                                <Link to="#" className="dropdown__item">Account Details</Link>
                                 <hr className="dropdown__divider" />
                                 <span onClick={handleLogout} className="dropdown__item dropdown__item--logout">
                                     Logout
@@ -138,13 +138,13 @@ const BottomNavbar = () => (
                 
                 {/* Shop Dropdown */}
                 <li className="dropdown">
-                    <Link to="/shop" className="dropdown__toggle">
+                    <Link to="/#" className="dropdown__toggle">
                         Shop
                     </Link>
                     <div className="dropdown__menu">
-                        <Link to="/shop/all-products" className="dropdown__item">All Products</Link>
-                        <Link to="/shop/new-arrivals" className="dropdown__item">New Arrivals</Link>
-                        <Link to="/shop/on-sale" className="dropdown__item">On Sale</Link>
+                        <Link to="#" className="dropdown__item">All Products</Link>
+                        <Link to="#" className="dropdown__item">New Arrivals</Link>
+                        <Link to="#" className="dropdown__item">On Sale</Link>
                     </div>
                 </li>
 
@@ -160,8 +160,8 @@ const BottomNavbar = () => (
                     </div>
                 </li>
 
-                <li><Link to="/reviews">Customers Reviews</Link></li>
-                <li><Link to="/about">About Nailova</Link></li>
+                <li><Link to="#">Customers Reviews</Link></li>
+                <li><Link to="#">About Nailova</Link></li>
             </ul>
         </nav>
     </div>
@@ -176,9 +176,9 @@ const MobileMenu = ({ isOpen, toggleMenu, isAuthenticated, handleLogout }) => {
             </button>
             <ul className="mobile-menu__links">
                 <li className="mobile-menu__item"><Link to="/" onClick={toggleMenu}>Home</Link></li>
-                <li className="mobile-menu__item"><Link to="/shop" onClick={toggleMenu}>Shop</Link></li>
-                <li className="mobile-menu__item"><Link to="/shop/new-arrivals" onClick={toggleMenu}>New Arrivals</Link></li>
-                <li className="mobile-menu__item"><Link to="/about" onClick={toggleMenu}>About Nailova</Link></li>
+                <li className="mobile-menu__item"><Link to="/category/accessories" onClick={toggleMenu}>Shop</Link></li>
+                <li className="mobile-menu__item"><Link to="/category/brushes" onClick={toggleMenu}>New Arrivals</Link></li>
+                <li className="mobile-menu__item"><Link to="#" onClick={toggleMenu}>About Nailova</Link></li>
                 {/* Removed other menu items as per request */}
             </ul>
         </div>

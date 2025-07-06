@@ -32,7 +32,7 @@ const Hero = () => (
         <div className="container hero-content">
             <h2 className="hero-title">Welcome To Nailova</h2>
             <div className="hero-cta">
-                <Link to="/shop" className="btn btn-primary">Shop Now</Link>
+                <Link to="/category/accessories" className="btn btn-primary">Shop Now</Link>
             </div>
         </div>
     </div>
@@ -111,21 +111,52 @@ const ShopByColor = () => (
                 <div className="color-grid-item-small"><img src={color5} alt="Color 5"/></div>
             </div>
             <div className="view-more-container">
-                <button className="btn btn-secondary">View More</button>
+                
+                <Link to="/category/accessories" className="btn btn-secondary">View More</Link>
             </div>
         </div>
     </section>
 );
 
 const StatsBar = () => (
-    <section className="stats-bar">
-        <div className="container stats-bar-content">
-            <div><p className="stat-number">1k+</p><p className="stat-label">Happy Customers</p></div>
-            <div><p className="stat-number">20+</p><p className="stat-label">Beauty Brands</p></div>
-            <div><p className="stat-number remove1">98%</p><p className="stat-label remove2">Positive Ratings</p></div>
-            <div><p className="stat-number remove3">86%</p><p className="stat-label remove4">Natural & Original</p></div>
+    <div class="stats-bar">
+        <div class="marquee-content">
+           
+            <div class="marquee-item">
+                <p class="stat-number">1k+</p>
+                <p class="stat-label">Happy Customers</p>
+            </div>
+            <div class="marquee-item">
+                <p class="stat-number">20+</p>
+                <p class="stat-label">Beauty Brands</p>
+            </div>
+            <div class="marquee-item">
+                <p class="stat-number remove1">98%</p>
+                <p class="stat-label remove2">Positive Ratings</p>
+            </div>
+            <div class="marquee-item">
+                <p class="stat-number remove3">86%</p>
+                <p class="stat-label remove4">Natural & Original</p>
+            </div>
+            
+            <div class="marquee-item">
+                <p class="stat-number">1k+</p>
+                <p class="stat-label">Happy Customers</p>
+            </div>
+            <div class="marquee-item">
+                <p class="stat-number">20+</p>
+                <p class="stat-label">Beauty Brands</p>
+            </div>
+            <div class="marquee-item">
+                <p class="stat-number remove1">98%</p>
+                <p class="stat-label remove2">Positive Ratings</p>
+            </div>
+            <div class="marquee-item">
+                <p class="stat-number remove3">86%</p>
+                <p class="stat-label remove4">Natural & Original</p>
+            </div>
         </div>
-    </section>
+    </div>
 );
 
 
@@ -140,7 +171,7 @@ const About = () => (
                     <h2 className="about-title">About Nailova</h2>
                     <p className='about-text-mobile'>Lorem Ipsum is simply dummy text</p>
                     <p className='about-text-p'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                    <Link to="/about" className="btn btn-secondary">Read More</Link>
+                    <Link to="#" className="btn btn-secondary">Read More</Link>
                 </div>
             </div>
         </div>
@@ -168,7 +199,7 @@ const NewArrivals = ({ products }) => {
                     )}
                 </div>
                 <div className="view-more-container">
-                     <Link to="/shop" className="btn btn-secondary">View All</Link>
+                     <Link to="/category/accessories" className="btn btn-secondary">View All</Link>
                 </div>
             </div>
         </section>

@@ -46,11 +46,11 @@ const Footer = () => {
                 <div className="footer-section footer-middle">
                     <h3 className="section-title">Shop</h3>
                     <ul className="footer-links">
-                        <li><Link to="/shop/dip-powder">Dip Powder</Link></li>
-                        <li><Link to="/shop/gel-polish">Gel Polish</Link></li>
-                        <li><Link to="/shop/nail-care">Nail Care</Link></li>
-                        <li><Link to="/shop/nail-essentials">Nail Essentials</Link></li>
-                        <li><Link to="/shop/removal">Removal</Link></li>
+                        <li><Link to="#">Dip Powder</Link></li>
+                        <li><Link to="#">Gel Polish</Link></li>
+                        <li><Link to="#">Nail Care</Link></li>
+                        <li><Link to="#">Nail Essentials</Link></li>
+                        <li><Link to="#">Removal</Link></li>
                     </ul>
                 </div>
 
@@ -58,13 +58,13 @@ const Footer = () => {
                 <div className="footer-section footer-right">
                     <h3 className="section-title">Learn</h3>
                     <ul className="footer-links">
-                        <li><Link to="/learn/about-us">About Us</Link></li>
-                        <li><Link to="/learn/reviews">Reviews</Link></li>
+                        <li><Link to="#">About Us</Link></li>
+                        <li><Link to="#s">Reviews</Link></li>
                     </ul>
                     <h3 className="section-title help-support-title">Help & Support</h3>
                     <ul className="footer-links">
-                        <li><Link to="/support/30-day-guarantee">30 Day Guarantee</Link></li>
-                        <li><Link to="/support/contact-us">Contact Us</Link></li>
+                        <li><Link to="#">30 Day Guarantee</Link></li>
+                        <li><Link to="#">Contact Us</Link></li>
                     </ul>
                 </div>
             </div>

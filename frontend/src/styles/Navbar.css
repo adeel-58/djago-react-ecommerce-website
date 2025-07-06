@@ -328,7 +328,8 @@ html, body {
     display: none;
     position: absolute;
     /* Adjusted left property to shift the dropdown further left */
-    left: 0; /* Changed back to 0, adjust if needed for specific alignment */
+    left: auto; /* Changed back to 0, adjust if needed for specific alignment */
+    right: 0;
     top: 100%;
     margin-top: 0.5rem;
     background-color: white;

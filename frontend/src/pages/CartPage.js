@@ -82,7 +82,7 @@ const CartPage = () => {
       ) : cartItems.length === 0 ? (
         <div className="empty-cart-message">
           <p>Your cart is currently empty. Time to find some pet-tastic goodies!</p>
-          <Link to="/products" className="btn btn-primary">Start Shopping</Link> {/* Use consistent button class */}
+          <Link to="/category/accessories" className="btn btn-primary">Start Shopping</Link> {/* Use consistent button class */}
         </div>
       ) : (
         <div className="cart-content">
