@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/Footer.css'; // We will create this CSS file
-import facebookIcon from '../../icons/facebook.png';
-import instagramIcon from '../../icons/instagram.png';
-import pinterestIcon from '../../icons/pinterest.png'; // Assuming this replaces Twitter based on common social media sets
+import facebookIcon from '../../icons/fb.svg';
+import instagramIcon from '../../icons/ig.svg';
+import pinterestIcon from '../../icons/tw.svg'; // Assuming this replaces Twitter based on common social media sets
 import logo from '../../icons/l.png'; // Import your actual logo
 
 const Footer = () => {

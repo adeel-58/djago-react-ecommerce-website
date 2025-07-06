@@ -36,7 +36,8 @@
   min-height: calc(100vh - var(--navbar-height, 70px) - 50px); /* Adjust 50px for potential footer height */
   padding: 40px 20px;
   font-family: 'Open Sans', sans-serif;
-  background-color: #fdf6e3; /* A very light, warm, pet-friendly background */
+  background-color: #ffffff; /* A very light, warm, pet-friendly background */
+   margin: 180px auto 40px auto;
   /* Or use a subtle pattern: */
   /* background-image: url('/path-to-subtle-pet-pattern.png'); */
 }

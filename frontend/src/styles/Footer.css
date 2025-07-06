@@ -41,9 +41,10 @@
 
 .stay-in-touch {
     font-size: 1.25rem;
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 10px;
     color: #113f3d;
+    font-style: italic;
 }
 
 .newsletter-text {
@@ -92,9 +93,20 @@
 }
 
 .arrow-icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
+    width: 24px;   /* Matches the viewBox width */
+    height: 24px;  /* Matches the viewBox height */
+
+  /* Apply non-uniform scaling to visually make the arrow thinner and longer. */
+  /* scaleX(0.7) makes it 30% thinner. */
+  /* scaleY(1.8) makes it 80% longer (and contributes to "bigger"). */
+  transform: scaleX(2.2) scaleY(1.2);
+  
+  /* Ensure the scaling happens from the center of the SVG. */
+  transform-origin: center center;
+
+  /* Standard display and centering for SVG icons. */
+  display: block;
+  margin: auto;
 }
 
 .social-icons {
@@ -255,6 +267,7 @@
 
     .footer-left {
         margin-bottom: 15px;
+        padding-left: 15px;
     }
 
     .newsletter-text {
@@ -276,6 +289,7 @@
         display: inline-block;
         vertical-align: top;
         padding-top: 15px;
+        padding-left: 15px;
     }
 
     .footer-right {
@@ -284,6 +298,7 @@
         display: inline-block;
         vertical-align: top;
         padding-top: 15px;
+         padding-left: 15px;
     }
 
     .section-title {

@@ -74,7 +74,7 @@ const Register = () => {
     <div className="register-page-container register-page-variant"> 
       <div className="auth-form-container">
         <h2 className="auth-title">Create Your Account</h2>
-        <p className="auth-subtitle">Join our pack and get the best for your pets!</p>
+        <p className="auth-subtitle">Join our pack and get the best for your Nails!</p>
 
         {displayError && <p className="auth-error-message">{displayError}</p>}
         
