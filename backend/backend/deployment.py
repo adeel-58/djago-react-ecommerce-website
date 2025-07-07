@@ -22,7 +22,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware', # This is duplicated, remove one if not needed
 ]
 
-CORS_ALLOWED_ORIGINS =['nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net']
+CORS_ALLOWED_ORIGINS =['https://nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net']
 
 STORAGES={
     "default": {
