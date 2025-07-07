@@ -1,16 +1,15 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://127.0.0.1:8000/api/', // Your Django backend API
+  baseURL: import.meta.env.VITE_API_BASE_URL, // Dynamically uses .env value
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Add a request interceptor to inject token dynamically
 API.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('accessToken'); // Or wherever you store it
+    const token = localStorage.getItem('accessToken');
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }

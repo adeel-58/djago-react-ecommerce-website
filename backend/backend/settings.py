@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1','.vercel.app','.now.sh', 'localhost'] # CORRECTED: 
 #ALLOWED_HOSTS=[]
 
 # Application definition
-CORS_ALLOWED_ORIGINS =['http://localhost:3000']
+#CORS_ALLOWED_ORIGINS =['http://localhost:3000']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
