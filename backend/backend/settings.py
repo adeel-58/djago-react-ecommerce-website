@@ -23,12 +23,12 @@ SECRET_KEY = 'django-insecure-16ueqsldqr!@02v-6##7pf_d=s9a=*o84285u@7!_y!blwnwhf
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # IMPORTANT: Set to False for testing production setup
-DEBUG = False # CHANGED: Set to False for production simulation
+DEBUG = True # CHANGED: Set to False for production simulation
 
 # When DEBUG is False, you MUST specify ALLOWED_HOSTS.
 # For local testing, '127.0.0.1' and 'localhost' are sufficient.
 # In production, this will be your actual domain name(s).
-ALLOWED_HOSTS = ['127.0.0.1','.vercel.app','.now.sh', 'localhost','localhost:3000'] # CORRECTED: Required when DEBUG is False
+ALLOWED_HOSTS = ['127.0.0.1','.vercel.app','.now.sh', 'localhost','localhost:3000','nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net'] # CORRECTED: Required when DEBUG is False
 #ALLOWED_HOSTS=[]
 
 # Application definition

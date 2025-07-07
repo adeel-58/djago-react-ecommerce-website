@@ -5,7 +5,7 @@ from .settings import BASE_DIR
 
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
 CSRF_TRUSTED_ORIGINS = ['https://'+os.environ['WEBSITE_HOSTNAME']]
-DEBUG = False
+DEBUG = True
 SECRET_KEY = os.environ['MY_SECRET_KEY']
 
 MIDDLEWARE = [
@@ -22,7 +22,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware', # This is duplicated, remove one if not needed
 ]
 
-#CORS_ALLOWED_ORIGINS =[]
+CORS_ALLOWED_ORIGINS =['nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net']
 
 STORAGES={
     "default": {
