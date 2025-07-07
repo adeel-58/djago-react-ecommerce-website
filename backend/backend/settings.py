@@ -28,7 +28,7 @@ DEBUG = True # CHANGED: Set to False for production simulation
 # When DEBUG is False, you MUST specify ALLOWED_HOSTS.
 # For local testing, '127.0.0.1' and 'localhost' are sufficient.
 # In production, this will be your actual domain name(s).
-ALLOWED_HOSTS = ['127.0.0.1','.vercel.app','.now.sh', 'localhost','localhost:3000','https://nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net'] # CORRECTED: Required when DEBUG is False
+ALLOWED_HOSTS = ['127.0.0.1','.vercel.app','.now.sh', 'localhost'] # CORRECTED: Required when DEBUG is False
 #ALLOWED_HOSTS=[]
 
 # Application definition
@@ -84,7 +84,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # CORRECTED: Point to your React build directory so Django can find index.html
-        'DIRS': [os.path.join(BASE_DIR.parent, 'frontend/build')], # Corrected path
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # Corrected path
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -180,6 +180,9 @@ CORS_ALLOW_ALL_ORIGINS = True
     # static files *outside* of any app, you might add them back here, but usually,
     # React build covers most frontend static needs.
 #]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 # This is the directory where `python manage.py collectstatic` will copy ALL static files.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

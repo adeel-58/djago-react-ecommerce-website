@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include, re_path # ADDED: re_path
 from django.views.generic import TemplateView # ADDED: TemplateView
-
+from django.urls import path
 # You have duplicated admin imports, keeping one.
 # from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView # Not directly used in urlpatterns below, but keep if used elsewhere
 
@@ -14,7 +14,8 @@ urlpatterns = [
 
     # ADDED: Catch-all URL pattern for your React frontend.
     # This serves the index.html for any path not handled by Django's other URLs (like /admin/ or /api/).
-    re_path(r'^(?:.*)/?$', TemplateView.as_view(template_name='index.html')),
+    #re_path(r'^(?:.*)/?$', TemplateView.as_view(template_name='index.html')),
+    path('', TemplateView.as_view(template_name="index.html")),
 ]
 
 # This block is for development serving of static/media files.
