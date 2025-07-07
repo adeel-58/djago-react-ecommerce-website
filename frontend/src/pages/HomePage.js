@@ -272,7 +272,7 @@ const HomePage = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/products/?limit=8')
+    axios.get('https://nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net/api/products/?limit=8')
       .then(response => {
         const productData = response.data.results || response.data;
         if (Array.isArray(productData)) {

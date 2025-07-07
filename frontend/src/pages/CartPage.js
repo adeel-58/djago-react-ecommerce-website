@@ -11,7 +11,7 @@ import {
 import CartItemCard from '../components/cart/CartItemCard'; // Assuming this path
 import '../styles/CartPage.css'; // Styles for CartPage
 
-const backendBaseURL = 'http://127.0.0.1:8000';
+const backendBaseURL = 'https://nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net';
 
 const CartPage = () => {
   const dispatch = useDispatch();

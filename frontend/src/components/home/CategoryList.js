@@ -8,7 +8,7 @@ const CategoryList = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/categories/')
+    axios.get('https://nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net/api/categories/')
       .then(response => setCategories(response.data.results || response.data)) // Adjust if API uses pagination
       .catch(error => console.error('Error fetching categories:', error));
   }, []);

@@ -8,7 +8,7 @@ import {
 } from '../../redux/slices/cartSlice';
 import '../../styles/CartItemCard.css'; // Import the CSS file
 import { getProductImage } from '../../utils/productAssets';
-const backendBaseURL = 'http://127.0.0.1:8000';
+const backendBaseURL = 'https://nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net';
 
 const CartItemCard = ({ item }) => {
   const dispatch = useDispatch();

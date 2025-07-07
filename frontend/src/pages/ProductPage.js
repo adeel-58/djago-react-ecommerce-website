@@ -6,7 +6,7 @@ import { updateCart } from '../redux/slices/cartSlice';
 import { getProductImage, getProductDescription } from '../utils/productAssets';
 import '../styles/ProductDetailPage.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+const API_URL = process.env.REACT_APP_API_URL || 'https://nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net';
 
 const ProductDetailPage = () => {
   const { id } = useParams();

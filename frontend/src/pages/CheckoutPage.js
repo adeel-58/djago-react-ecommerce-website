@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'; // Added useDispatch
 import { clearCart } from '../redux/slices/cartSlice'; // To clear cart after order
 import '../styles/CheckoutPage.css'; // Styles for CheckoutPage
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+const API_URL = process.env.REACT_APP_API_URL || 'https://nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net';
 
 const CheckoutPage = () => {
   const [formData, setFormData] = useState({

@@ -12,7 +12,7 @@ const OrdersPage = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/orders/', {
+        const response = await axios.get('https://nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net/api/orders/', {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },

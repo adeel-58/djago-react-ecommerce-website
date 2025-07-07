@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const backendBaseURL = 'http://127.0.0.1:8000';
+const backendBaseURL = 'https://nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net';
 
 const initialState = {
   cartItems: [],

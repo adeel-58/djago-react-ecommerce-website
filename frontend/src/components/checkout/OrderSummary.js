@@ -27,7 +27,7 @@ const OrderSummary = () => {
             cartItems.map(item => (
                 <div key={item.id} className="summary-item">
                     <img 
-                        src={item.image ? `${process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000'}${item.image}` : 'https://placehold.co/60x60/FF6B6B/FFFFFF?text=Item'} 
+                        src={item.image ? `${process.env.REACT_APP_API_URL || 'https://nailova-django-react-website-erfwf0csd9hjaafv.southeastasia-01.azurewebsites.net'}${item.image}` : 'https://placehold.co/60x60/FF6B6B/FFFFFF?text=Item'} 
                         alt={item.name} 
                         className="summary-item-image"
                         onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/60x60/CCCCCC/FFFFFF?text=No+Img'; }}
