@@ -84,8 +84,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # CORRECTED: Point to your React build directory so Django can find index.html
-      #  'DIRS': [os.path.join(BASE_DIR, 'templates')], # Corrected path
-        'DIRS': [os.path.join(BASE_DIR.parent, 'frontend/build')],
+       'DIRS': [os.path.join(BASE_DIR, 'templates')], # Corrected path
+        #'DIRS': [os.path.join(BASE_DIR.parent, 'frontend/build')],
 
         'APP_DIRS': True,
         'OPTIONS': {
@@ -183,8 +183,8 @@ CORS_ALLOW_ALL_ORIGINS = True
     # React build covers most frontend static needs.
 #]
 STATICFILES_DIRS = [
-   # os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR.parent, 'frontend/build/static'),
+    os.path.join(BASE_DIR, 'static'),
+    #os.path.join(BASE_DIR.parent, 'frontend/build/static'),
 ]
 
 # This is the directory where `python manage.py collectstatic` will copy ALL static files.
