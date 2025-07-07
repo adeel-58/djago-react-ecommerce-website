@@ -22,7 +22,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware', # This is duplicated, remove one if not needed
 ]
 
-CORS_ALLOWED_ORIGINS =['https://blue-desert-098867800.2.azurestaticapps.net/']
+#CORS_ALLOWED_ORIGINS =['https://blue-desert-098867800.2.azurestaticapps.net/']
 
 STORAGES={
     "default": {
