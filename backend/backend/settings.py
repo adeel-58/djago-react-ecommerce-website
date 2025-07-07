@@ -174,12 +174,12 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # CORRECTED: Point STATICFILES_DIRS to your React build's 'static' folder.
 # This tells Django (and WhiteNoise) where to find your compiled React CSS/JS.
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR.parent, 'frontend/build/static'), # Corrected path
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR.parent, 'frontend/build/static'), # Corrected path
     # You had os.path.join(BASE_DIR, 'static') here before. If you have other project-level
     # static files *outside* of any app, you might add them back here, but usually,
     # React build covers most frontend static needs.
-]
+#]
 
 # This is the directory where `python manage.py collectstatic` will copy ALL static files.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
