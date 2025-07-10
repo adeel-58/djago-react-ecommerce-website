@@ -14,8 +14,8 @@ urlpatterns = [
 
     # ADDED: Catch-all URL pattern for your React frontend.
     # This serves the index.html for any path not handled by Django's other URLs (like /admin/ or /api/).
-    #re_path(r'^(?:.*)/?$', TemplateView.as_view(template_name='index.html')),
-    path('', TemplateView.as_view(template_name="index.html")),
+    re_path(r'^(?:.*)/?$', TemplateView.as_view(template_name='index.html')),
+    #path('', TemplateView.as_view(template_name="index.html")),
 ]
 
 # This block is for development serving of static/media files.
