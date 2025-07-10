@@ -41,17 +41,18 @@ const ProductDetailPage = () => {
     if (!product) return;
     const userToken = access_token || localStorage.getItem('access_token');
 
+    // Check if the user is authenticated. If not, show message and redirect.
     if (!isAuthenticated || !userToken) {
       setMessage({ text: 'Please log in to add items to your cart.', type: 'error' });
       setTimeout(() => {
-        setMessage({ text: '', type: '' });
-        navigate('/login');
-      }, 2000);
-      return;
+        setMessage({ text: '', type: '' }); // Clear message after a delay
+        navigate('/login'); // Redirect to the login page
+      }, 2000); // Redirect after 2 seconds
+      return; // Stop further execution of the function
     }
 
     setAddingToCart(true);
-    setMessage({ text: '', type: '' });
+    setMessage({ text: '', type: '' }); // Clear any previous messages
 
     try {
       const config = { headers: { Authorization: `Bearer ${userToken}` } };
@@ -63,7 +64,7 @@ const ProductDetailPage = () => {
 
       dispatch(updateCart(response.data.cart || response.data));
       setMessage({ text: `${product.name} added to cart!`, type: 'success' });
-      setTimeout(() => setMessage({ text: '', type: '' }), 3000);
+      setTimeout(() => setMessage({ text: '', type: '' }), 3000); // Clear success message after 3 seconds
     } catch (error) {
       const errorMessage =
         error.response?.data?.detail ||
@@ -71,7 +72,7 @@ const ProductDetailPage = () => {
         'Failed to add item to cart. Please try again.';
       console.error('Add to cart failed:', errorMessage);
       setMessage({ text: errorMessage, type: 'error' });
-      setTimeout(() => setMessage({ text: '', type: '' }), 5000);
+      setTimeout(() => setMessage({ text: '', type: '' }), 5000); // Clear error message after 5 seconds
     } finally {
       setAddingToCart(false);
     }
@@ -133,7 +134,9 @@ const ProductDetailPage = () => {
           <button
             className="btn btn-primary add-to-cart-button"
             onClick={handleAddToCart}
-            disabled={addingToCart || !isAuthenticated}
+            // The button is now only disabled when `addingToCart` is true,
+            // allowing unauthenticated users to click it.
+            disabled={addingToCart}
           >
             {addingToCart ? 'Adding...' : 'Add to Cart'}
           </button>
